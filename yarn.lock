@@ -175,6 +175,20 @@
   dependencies:
     tslib "^1.9.0"
 
+"@clr/angular@^0.11.19":
+  version "0.11.19"
+  resolved "https://registry.yarnpkg.com/@clr/angular/-/angular-0.11.19.tgz#c5f5dc349b684c6069de6bc10f47a68c5f1dd3f4"
+  dependencies:
+    tslib "^1.7.1"
+
+"@clr/icons@^0.11.19":
+  version "0.11.19"
+  resolved "https://registry.yarnpkg.com/@clr/icons/-/icons-0.11.19.tgz#514bf125a61bfb4a7c0b4739eb5fa2c15819e195"
+
+"@clr/ui@^0.11.19":
+  version "0.11.19"
+  resolved "https://registry.yarnpkg.com/@clr/ui/-/ui-0.11.19.tgz#28d08ea7746b937fdc09650fbd7b9ebcda94d0f0"
+
 "@ngtools/webpack@6.0.5":
   version "6.0.5"
   resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-6.0.5.tgz#b91eed0de9df125877183bf5285df4435882024a"
@@ -343,6 +357,10 @@
     "@webassemblyjs/ast" "1.4.3"
     "@webassemblyjs/wast-parser" "1.4.3"
     long "^3.2.0"
+
+"@webcomponents/custom-elements@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@webcomponents/custom-elements/-/custom-elements-1.0.0.tgz#b1726e12074b556aa31b93f36ff6a03a435259c4"
 
 abbrev@1:
   version "1.1.1"
@@ -5042,6 +5060,10 @@ run-queue@^1.0.0, run-queue@^1.0.3:
   dependencies:
     aproba "^1.1.1"
 
+rxjs-compat@^6.2.0:
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/rxjs-compat/-/rxjs-compat-6.2.0.tgz#2eb49cc6ac20d0d7057c6887d1895beaab0966f9"
+
 rxjs@^6.0.0:
   version "6.2.0"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.2.0.tgz#e024d0e180b72756a83c2aaea8f25423751ba978"
@@ -5858,7 +5880,7 @@ tsickle@^0.27.2:
     source-map "^0.6.0"
     source-map-support "^0.5.0"
 
-tslib@^1.8.0, tslib@^1.8.1, tslib@^1.9.0:
+tslib@^1.7.1, tslib@^1.8.0, tslib@^1.8.1, tslib@^1.9.0:
   version "1.9.1"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.9.1.tgz#a5d1f0532a49221c87755cfcc89ca37197242ba7"
 
