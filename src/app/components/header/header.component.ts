@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../../services/auth.service';
 import {Observable} from 'rxjs';
 import {User} from '../../models/user';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -11,7 +12,7 @@ import {User} from '../../models/user';
 export class HeaderComponent implements OnInit {
 
   user$: Observable<User>;
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private router: Router) {
     this.user$ = authService.user$;
   }
 
@@ -20,5 +21,6 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     this.authService.logout();
+    this.router.navigateByUrl('/login');
   }
 }
