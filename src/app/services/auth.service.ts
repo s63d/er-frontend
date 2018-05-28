@@ -41,7 +41,6 @@ export class AuthService {
     }).pipe(
       tap(response => this.saveToken(response.token)),
       ... this.decodeToken)
-      .subscribe();
   }
 
 
