@@ -36,11 +36,11 @@ export class AuthService {
   login(email, password) {
     const body = new HttpParams({fromObject: {email, password}});
 
-    return this.http.post('http://localhost:8081/api/users/login', body.toString(), {
+    return this.http.post<any>('http://localhost:8081/api/users/login', body.toString(), {
       headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'})
     }).pipe(
       tap(response => this.saveToken(response.token)),
-      ... this.decodeToken)
+      ... this.decodeToken);
   }
 
 

@@ -12,15 +12,14 @@ import {Router} from '@angular/router';
 export class HeaderComponent implements OnInit {
 
   user$: Observable<User>;
-  constructor(private authService: AuthService, private router: Router) {
-    this.user$ = authService.user$;
+  constructor(private auth: AuthService, private router: Router) {
   }
 
   ngOnInit() {
   }
 
   logout() {
-    this.authService.logout();
+    this.auth.logout();
     this.router.navigateByUrl('/login');
   }
 }

@@ -11,14 +11,14 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { HeaderComponent } from './components/header/header.component';
 import { LoginComponent } from './pages/login/login.component';
 import {tokenGetter} from './services/auth.service';
-import { HomeComponent } from './pages/home/home.component';
+import { CarsComponent } from './pages/cars/cars.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     LoginComponent,
-    HomeComponent
+    CarsComponent
   ],
   imports: [
     BrowserModule,

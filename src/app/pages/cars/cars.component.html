@@ -1,0 +1,15 @@
+<h3 class="m-0">Cars</h3>
+<clr-tabs>
+  <clr-tab>
+    <button clrTabLink id="link1">Active</button>
+    <clr-tab-content id="content1" *clrIfActive="true">
+      <p>Active cars</p>
+    </clr-tab-content>
+  </clr-tab>
+  <clr-tab>
+    <button clrTabLink>History</button>
+    <clr-tab-content *clrIfActive>
+      <p>Car owner history</p>
+    </clr-tab-content>
+  </clr-tab>
+</clr-tabs>
