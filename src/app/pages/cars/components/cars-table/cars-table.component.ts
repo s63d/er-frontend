@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {merge, Observable, zip} from 'rxjs';
+import {Observable, zip} from 'rxjs';
 import {Ownership} from '../../../../models/ownership';
 import {OwnershipService} from '../../../../services/ownership.service';
 import {Vehicle} from '../../../../models/vehicle';
-import {map, mergeMap, tap} from 'rxjs/operators';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-cars-table',
