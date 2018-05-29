@@ -1,46 +1,39 @@
-
 <div class="row">
   <div class="col-md-12 col-lg-6">
     <h3 class="m-0">Trips</h3>
     <div class="row">
       <div class="col-md-12">
-      <h5>Alfa Romeo - 147 - Zwart </h5>
+        <h5>Alfa Romeo - 147 - Zwart </h5>
+        <clr-datagrid [(clrDgSelected)]="selectedTrips" [clDgRowSelection]="true">
+          <clr-dg-placeholder>We couldn't find any trips</clr-dg-placeholder>
+          <clr-dg-column>Trip ID</clr-dg-column>
+          <clr-dg-column>Distance</clr-dg-column>
+          <clr-dg-column>Date</clr-dg-column>
 
-      <clr-datagrid>
-      <clr-dg-placeholder>We couldn't find any trips for <b>Auto id</b>!</clr-dg-placeholder>
-      <clr-dg-column>Trip ID</clr-dg-column>
-      <clr-dg-column>Distance</clr-dg-column>
-      <clr-dg-column>Date</clr-dg-column>
-      <clr-dg-row *clrDgItems="let trip of trips$ | async" [clrDgItem]="ownership">
-        <clr-dg-cell>
-          <a href="###">
-            {{ trip.tripId }}
-          </a>
-        </clr-dg-cell>
-        <clr-dg-cell>{{ trip.length / 1000 }} km</clr-dg-cell>
-        <clr-dg-cell>{{ trip.date | date }}</clr-dg-cell>
-      </clr-dg-row>
+          <clr-dg-row *clrDgItems="let trip of trips$ | async" [clrDgItem]="trip">
+            <clr-dg-cell>{{ trip.tripId }}</clr-dg-cell>
+            <clr-dg-cell>{{ trip.length / 1000 }} km</clr-dg-cell>
+            <clr-dg-cell>{{ trip.date | date }}</clr-dg-cell>
+          </clr-dg-row>
 
 
-      <clr-dg-footer>
-        <clr-dg-pagination #pagination [clrDgPageSize]="10">
-          {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
-          of {{pagination.totalItems}} trips
-        </clr-dg-pagination>
-      </clr-dg-footer>
-    </clr-datagrid>
+          <clr-dg-footer>
+            <clr-dg-pagination #pagination [clrDgPageSize]="10">
+              {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
+              of {{pagination.totalItems}} trips
+            </clr-dg-pagination>
+          </clr-dg-footer>
+        </clr-datagrid>
       </div>
     </div>
   </div>
 
   <div class="col-md-12 col-lg-6">
     <div class="card">
-      <!--<div class="card-map" style="background-color: red;">-->
-        <yaga-map>
-          <yaga-polyline *ngFor="let polyline of polylines$ | async" [geoJSON]="polyline"></yaga-polyline>
-          <yaga-tile-layer [url]="'http://a.tile.openstreetmap.org/{z}/{x}/{y}.png'"></yaga-tile-layer>
-        </yaga-map>
-      <!--</div>-->
+      <yaga-map [zoom]="8" [lat]="48.210033" [lng]="16.363449">
+        <yaga-polyline *ngFor="let trip of selectedTrips" [geoJSON]="trip.polyline"></yaga-polyline>
+        <yaga-tile-layer [url]="'http://a.tile.openstreetmap.org/{z}/{x}/{y}.png'"></yaga-tile-layer>
+      </yaga-map>
     </div>
   </div>
 </div>

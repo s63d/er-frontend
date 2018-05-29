@@ -33,24 +33,40 @@ export class TripsComponent implements OnInit {
       'date': '2018-05-22T09:17:34.000+0000',
       'carTrackerId': '8873028c-3358-42b7-8199-a72901d10e70'
     }
-  ]);
-
-
-  // TODO make this fancy......
-  polylines$ = this.trips$.pipe(
-    map(trips => {
-      const polylines = [];
-      for (const trip of trips) {
-        if (trip.polyline === '') {
-          continue;
-        }
-        polylines.push({'type': 'Feature',
-          'properties': {},
-          'geometry': polylineUtil.toGeoJSON(trip.polyline)
-        });
+  ]).pipe(
+    map(rawTrips => {
+      const trips = [];
+      for (const trip of rawTrips) {
+        let newTrip = {... trip};
+        newTrip.polyline = {'type': 'Feature',
+                  'properties': {},
+                  'geometry': polylineUtil.toGeoJSON(trip.polyline)
+                };
+        trips.push(newTrip);
       }
-      return polylines;
-    }));
+      return trips;
+    })
+  );
+
+  selectedTrips = [];
+
+
+  // // TODO make this fancy......
+  // polylines$ = this.trips$.pipe(
+  //   map(trips => {
+  //     const polylines = [];
+  //     for (const trip of trips) {
+  //       if (trip.polyline === '') {
+  //         continue;
+  //       }
+  //       polylines.push({'type': 'Feature',
+  //         'properties': {},
+  //         'geometry': polylineUtil.toGeoJSON(trip.polyline)
+  //       });
+  //     }
+  //     return polylines;
+  //   }));
+
   constructor() { }
 
   ngOnInit() {
