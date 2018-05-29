@@ -1,3 +1,31 @@
-<p>
-  invoices works!
-</p>
+<div class="col-md-8">
+  <clr-datagrid>
+    <clr-dg-placeholder>We couldn't find any invoices</clr-dg-placeholder>
+    <clr-dg-column>No.</clr-dg-column>
+    <clr-dg-column>Total distance</clr-dg-column>
+    <clr-dg-column>Price</clr-dg-column>
+    <clr-dg-column>Date</clr-dg-column>
+    <clr-dg-column>Month</clr-dg-column>
+    <clr-dg-column>Status</clr-dg-column>
+
+    <clr-dg-row *clrDgItems="let invoice of invoices$ | async" [clrDgItem]="invoice">
+      <clr-dg-cell>{{ invoice.id }}</clr-dg-cell>
+      <clr-dg-cell>1000 km</clr-dg-cell>
+      <clr-dg-cell>&euro; 50,43</clr-dg-cell>
+      <clr-dg-cell>{{ invoice.date | date }}</clr-dg-cell>
+      <clr-dg-cell>{{ invoice.month }}</clr-dg-cell>
+      <clr-dg-cell>
+        <span *ngIf="invoice.status == 'open'" class="label label-info">Open</span>
+        <span *ngIf="invoice.status == 'due'" class="label label-warning">Due in 2 weeks</span>
+        <span *ngIf="invoice.status == 'paid'" class="label label-success">Paid</span>
+      </clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-footer>
+      <clr-dg-pagination #pagination [clrDgPageSize]="10">
+        {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
+        of {{pagination.totalItems}} invoices
+      </clr-dg-pagination>
+    </clr-dg-footer>
+  </clr-datagrid>
+</div>
