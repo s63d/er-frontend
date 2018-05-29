@@ -17,6 +17,7 @@ import { InvoicesComponent } from './pages/invoices/invoices.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { RegisterCarModalComponent } from './pages/cars/components/register-car-modal/register-car-modal.component';
 import { CarsTableComponent } from './pages/cars/components/cars-table/cars-table.component';
+import { YagaModule } from '@yaga/leaflet-ng2';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { CarsTableComponent } from './pages/cars/components/cars-table/cars-tabl
         whitelistedDomains: ['localhost:8081', 'localhost:8080', 'localhost:8082'],
       }
     }),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    YagaModule
   ],
   providers: [],
   bootstrap: [AppComponent]

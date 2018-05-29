@@ -21,7 +21,6 @@ export class CarsTableComponent implements OnInit {
     );
   }
 
-
   onSuspend(vehicle: Vehicle) {
     this.ownershipService.suspendVehicle(vehicle).subscribe(console.log);
   }
