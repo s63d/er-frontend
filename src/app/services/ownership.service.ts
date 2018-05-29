@@ -12,4 +12,8 @@ export class OwnershipService {
   loadActive() {
     return this.http.get<Ownership[]>('http://localhost:8080/api/vehicles/current');
   }
+
+  loadPrevious() {
+    return this.http.get<Ownership[]>('http://localhost:8080/api/vehicles/history');
+  }
 }

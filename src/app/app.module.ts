@@ -17,6 +17,7 @@ import { InvoicesComponent } from './pages/invoices/invoices.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { RegisterCarModalComponent } from './pages/cars/components/register-car-modal/register-car-modal.component';
 import { ActiveCarsComponent } from './pages/cars/components/active-cars/active-cars.component';
+import { PreviousCarsComponent } from './pages/cars/components/previous-cars/previous-cars.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ActiveCarsComponent } from './pages/cars/components/active-cars/active-
     TripsComponent,
     InvoicesComponent,
     RegisterCarModalComponent,
-    ActiveCarsComponent
+    ActiveCarsComponent,
+    PreviousCarsComponent
   ],
   imports: [
     BrowserModule,
