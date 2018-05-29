@@ -5,6 +5,7 @@ import {CarsComponent} from './pages/cars/cars.component';
 import {AuthGuard} from './guards/auth.guard';
 import {LoginGuard} from './guards/login.guard';
 import {TripsComponent} from './pages/trips/trips.component';
+import {InvoicesComponent} from './pages/invoices/invoices.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,12 @@ const routes: Routes = [
     component: TripsComponent,
     canActivate: [AuthGuard]
   },
+  {
+    path: 'invoices',
+    component: InvoicesComponent,
+    canActivate: [AuthGuard]
+  },
+
   {
     path: '**',
     redirectTo: '/cars'

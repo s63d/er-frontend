@@ -13,6 +13,7 @@ import { LoginComponent } from './pages/login/login.component';
 import {tokenGetter} from './services/auth.service';
 import { CarsComponent } from './pages/cars/cars.component';
 import { TripsComponent } from './pages/trips/trips.component';
+import { InvoicesComponent } from './pages/invoices/invoices.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { TripsComponent } from './pages/trips/trips.component';
     HeaderComponent,
     LoginComponent,
     CarsComponent,
-    TripsComponent
+    TripsComponent,
+    InvoicesComponent
   ],
   imports: [
     BrowserModule,
