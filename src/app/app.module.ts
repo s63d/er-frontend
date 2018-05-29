@@ -12,13 +12,15 @@ import { HeaderComponent } from './components/header/header.component';
 import { LoginComponent } from './pages/login/login.component';
 import {tokenGetter} from './services/auth.service';
 import { CarsComponent } from './pages/cars/cars.component';
+import { TripsComponent } from './pages/trips/trips.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     LoginComponent,
-    CarsComponent
+    CarsComponent,
+    TripsComponent
   ],
   imports: [
     BrowserModule,

@@ -4,6 +4,7 @@ import {LoginComponent} from './pages/login/login.component';
 import {CarsComponent} from './pages/cars/cars.component';
 import {AuthGuard} from './guards/auth.guard';
 import {LoginGuard} from './guards/login.guard';
+import {TripsComponent} from './pages/trips/trips.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,11 @@ const routes: Routes = [
   {
     path: 'cars',
     component: CarsComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'trips',
+    component: TripsComponent,
     canActivate: [AuthGuard]
   },
   {
