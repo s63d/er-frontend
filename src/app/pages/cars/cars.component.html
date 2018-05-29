@@ -1,18 +1,4 @@
 <h3 class="m-0">Cars</h3>
 <button class="btn btn-primary-outline btn-sm" (click)="opened = true">Register car</button>
-<clr-tabs>
-  <clr-tab>
-    <button clrTabLink id="link1">Active</button>
-    <clr-tab-content id="content1" *clrIfActive="true">
-      <app-active-cars></app-active-cars>
-    </clr-tab-content>
-  </clr-tab>
-  <clr-tab>
-    <button clrTabLink>History</button>
-    <clr-tab-content *clrIfActive>
-      <app-previous-cars></app-previous-cars>
-    </clr-tab-content>
-  </clr-tab>
-</clr-tabs>
-
+<app-cars-table></app-cars-table>
 <app-register-car-modal [(opened)]="opened"></app-register-car-modal>
