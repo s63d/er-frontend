@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams, HttpResponse} from '@angular/common/http';
 import {BehaviorSubject, Observable, of} from 'rxjs';
 import {User} from '../models/user';
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -33,14 +33,22 @@ export class AuthService {
     ).subscribe(user => console.log('restoring user..', user));
   }
 
-  login(email, password) {
-    const body = new HttpParams({fromObject: {email, password}});
+  login(username, password) {
+    const body = new HttpParams({fromObject: {username, password}});
 
-    return this.http.post<any>('http://localhost:8081/api/users/login', body.toString(), {
-      headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'})
+    // localhost:8081/login
+    return this.http.post<any>('http://httpbin.org/post', body.toString(), {
+      headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
+      observe: 'response'
     }).pipe(
-      tap(response => this.saveToken(response.token)),
-      ... this.decodeToken);
+      tap(resp => {
+        const keys = resp.headers.keys();
+        keys.map(key => `${key}: ${resp.headers.get(key)}`).forEach(console.log);
+
+      })
+    );
+      // tap(response => this.saveToken(response.token)),
+      // ... this.decodeToken);
   }
 
 

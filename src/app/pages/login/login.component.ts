@@ -8,7 +8,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  username = 'goosje@hotmail.com';
+  username = 'maudhje@hotmail.com';
   password = 'Wachtwoord2';
 
   wrongLogin = false;
