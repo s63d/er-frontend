@@ -1,4 +1,5 @@
 <h3 class="m-0">Cars</h3>
+<button class="btn btn-primary-outline btn-sm" (click)="opened = true">Register car</button>
 <clr-tabs>
   <clr-tab>
     <button clrTabLink id="link1">Active</button>
@@ -13,3 +14,5 @@
     </clr-tab-content>
   </clr-tab>
 </clr-tabs>
+
+<app-register-car-modal [(opened)]="opened"></app-register-car-modal>

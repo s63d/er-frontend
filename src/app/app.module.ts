@@ -14,6 +14,8 @@ import {tokenGetter} from './services/auth.service';
 import { CarsComponent } from './pages/cars/cars.component';
 import { TripsComponent } from './pages/trips/trips.component';
 import { InvoicesComponent } from './pages/invoices/invoices.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { RegisterCarModalComponent } from './pages/cars/components/register-car-modal/register-car-modal.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { InvoicesComponent } from './pages/invoices/invoices.component';
     LoginComponent,
     CarsComponent,
     TripsComponent,
-    InvoicesComponent
+    InvoicesComponent,
+    RegisterCarModalComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,8 @@ import { InvoicesComponent } from './pages/invoices/invoices.component';
         tokenGetter: tokenGetter,
         whitelistedDomains: ['localhost:8081', 'localhost:8080', 'localhost:8082'],
       }
-    })
+    }),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
