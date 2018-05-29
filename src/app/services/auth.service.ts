@@ -17,9 +17,9 @@ export class AuthService {
   user$ = this.userSubject.asObservable();
 
   decodeToken = [
-    map(response => this.helper.decodeToken(response.token)),
-    map(token => new User(token.sub, 'todo@gmail.com', token.userRole)),
-    tap(user => this.userSubject.next(user))
+    map((token: string) => this.helper.decodeToken(token)),
+    map((token: any) => new User(token.userId, token.sub, token.userRole)),
+    tap((user: User) => this.userSubject.next(user))
   ];
 
   constructor(private http: HttpClient, public helper: JwtHelperService) {
@@ -36,19 +36,14 @@ export class AuthService {
   login(username, password) {
     const body = new HttpParams({fromObject: {username, password}});
 
-    // localhost:8081/login
-    return this.http.post<any>('http://httpbin.org/post', body.toString(), {
+    return this.http.post('http://localhost:8081/login', body.toString(), {
       headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
       observe: 'response'
     }).pipe(
-      tap(resp => {
-        const keys = resp.headers.keys();
-        keys.map(key => `${key}: ${resp.headers.get(key)}`).forEach(console.log);
-
-      })
+      map(resp => resp.headers.get('Authorization').substr('Bearer '.length)),
+      tap(token => this.saveToken(token)),
+      ... this.decodeToken
     );
-      // tap(response => this.saveToken(response.token)),
-      // ... this.decodeToken);
   }
 
 
