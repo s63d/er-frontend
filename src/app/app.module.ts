@@ -16,6 +16,7 @@ import { TripsComponent } from './pages/trips/trips.component';
 import { InvoicesComponent } from './pages/invoices/invoices.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { RegisterCarModalComponent } from './pages/cars/components/register-car-modal/register-car-modal.component';
+import { ActiveCarsComponent } from './pages/cars/components/active-cars/active-cars.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { RegisterCarModalComponent } from './pages/cars/components/register-car-
     CarsComponent,
     TripsComponent,
     InvoicesComponent,
-    RegisterCarModalComponent
+    RegisterCarModalComponent,
+    ActiveCarsComponent
   ],
   imports: [
     BrowserModule,
