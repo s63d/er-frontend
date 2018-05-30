@@ -1,4 +1,4 @@
 export class User {
 
-  constructor(private id: number, private email: String, private role: String) {}
+  constructor(public id: number, public email: String, public role: String) {}
 }

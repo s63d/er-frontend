@@ -6,6 +6,7 @@ import {AuthGuard} from './guards/auth.guard';
 import {LoginGuard} from './guards/login.guard';
 import {TripsComponent} from './pages/trips/trips.component';
 import {InvoicesComponent} from './pages/invoices/invoices.component';
+import {RoleGuard} from './guards/role.guard';
 
 const routes: Routes = [
   {
@@ -16,17 +17,26 @@ const routes: Routes = [
   {
     path: 'cars',
     component: CarsComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard, RoleGuard],
+    data: {
+      role: 'BASIC'
+    }
   },
   {
     path: 'trips',
     component: TripsComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard, RoleGuard],
+    data: {
+      role: 'BASIC'
+    }
   },
   {
     path: 'invoices',
     component: InvoicesComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard, RoleGuard],
+    data: {
+      role: 'BASIC'
+    }
   },
 
   {
