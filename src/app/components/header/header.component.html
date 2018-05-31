@@ -6,11 +6,17 @@
       <span class="title">Project ER</span>
     </a>
   </div>
-  <div class="header-nav" [clr-nav-level]="1">
-    <a class="nav-link" [routerLink]="['/cars']" routerLinkActive="active"><span class="nav-text">Cars</span></a>
-    <a class="nav-link" href="#" [routerLink]="['/trips']" routerLinkActive="active"><span class="nav-text">Trips</span></a>
-    <a class="nav-link" href="#" [routerLink]="['/invoices']" routerLinkActive="active"><span class="nav-text">Invoices</span></a>
-  </div>
+  <div class="header-nav" [clr-nav-level]="1" [ngSwitch]="(auth.user$ | async).role">
+    <app-basic-links *ngSwitchCase="'basic'"></app-basic-links>
+    <app-gov-links *ngSwitchCase="'goverment'"></app-gov-links>
+    <app-police-links *ngSwitchCase="'police'"></app-police-links>
+   </div>
+
+  <form class="search" *ngIf="(auth.user$ | async).role == 'police'">
+    <label for="search_input">
+      <input id="search_input" type="text" placeholder="Search for a car...">
+    </label>
+  </form>
   <div class="header-actions">
     <clr-dropdown>
     <button class="nav-text" clrDropdownTrigger>

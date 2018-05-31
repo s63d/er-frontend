@@ -18,6 +18,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { RegisterCarModalComponent } from './pages/cars/components/register-car-modal/register-car-modal.component';
 import { CarsTableComponent } from './pages/cars/components/cars-table/cars-table.component';
 import { YagaModule } from '@yaga/leaflet-ng2';
+import { GovLinksComponent } from './components/header/gov-links/gov-links.component';
+import { BasicLinksComponent } from './components/header/basic-links/basic-links.component';
+import { PoliceLinksComponent } from './components/header/police-links/police-links.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,10 @@ import { YagaModule } from '@yaga/leaflet-ng2';
     TripsComponent,
     InvoicesComponent,
     RegisterCarModalComponent,
-    CarsTableComponent
+    CarsTableComponent,
+    GovLinksComponent,
+    BasicLinksComponent,
+    PoliceLinksComponent
   ],
   imports: [
     BrowserModule,
