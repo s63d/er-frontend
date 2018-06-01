@@ -10,6 +10,8 @@ import {RoleGuard} from './guards/role.guard';
 import {PoliceHomeComponent} from './pages/police/police-home/police-home.component';
 import {AllCarsComponent} from './pages/police/all-cars/all-cars.component';
 import {CarDetailsComponent} from './pages/police/car-details/car-details.component';
+import {ROLE_BASIC, ROLE_GOV, ROLE_POLICE} from './models/roles';
+import {CartrackersListComponent} from './pages/gov/cartrackers-list/cartrackers-list.component';
 
 const routes: Routes = [
   {
@@ -25,7 +27,7 @@ const routes: Routes = [
     component: CarsComponent,
     canActivate: [AuthGuard, RoleGuard],
     data: {
-      role: 'BASIC'
+      role: ROLE_BASIC
     }
   },
   {
@@ -33,7 +35,7 @@ const routes: Routes = [
     component: TripsComponent,
     canActivate: [AuthGuard, RoleGuard],
     data: {
-      role: 'BASIC'
+      role: ROLE_BASIC
     }
   },
   {
@@ -41,7 +43,7 @@ const routes: Routes = [
     component: InvoicesComponent,
     canActivate: [AuthGuard, RoleGuard],
     data: {
-      role: 'BASIC'
+      role: ROLE_BASIC
     }
   },
   /*
@@ -52,7 +54,7 @@ const routes: Routes = [
     component: AllCarsComponent,
     canActivate: [AuthGuard, RoleGuard],
     data: {
-      role: 'POLICE'
+      role: ROLE_POLICE
     }
   },
   {
@@ -60,10 +62,21 @@ const routes: Routes = [
     component: CarDetailsComponent,
     canActivate: [AuthGuard, RoleGuard],
     data: {
-      role: 'POLICE'
+      role: ROLE_POLICE
     }
   },
 
+  /*
+   * Government users
+   */
+  {
+    path: 'gov/cars',
+    component: CartrackersListComponent,
+    canActivate: [AuthGuard, RoleGuard],
+    data: {
+      role: ROLE_GOV
+    }
+  },
   {
     path: '**',
     redirectTo: '/cars'
