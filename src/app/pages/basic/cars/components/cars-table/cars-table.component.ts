@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Observable, zip} from 'rxjs';
-import {Ownership} from '../../../../models/ownership';
-import {OwnershipService} from '../../../../services/ownership.service';
-import {Vehicle} from '../../../../models/vehicle';
+import {Ownership} from '../../../../../models/ownership';
+import {OwnershipService} from '../../../../../services/ownership.service';
+import {Vehicle} from '../../../../../models/vehicle';
 import {map} from 'rxjs/operators';
 
 @Component({
