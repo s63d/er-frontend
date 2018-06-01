@@ -1,18 +1,20 @@
 
 <clr-header *ngIf="auth.user$ | async ">
   <div class="branding">
-    <a [routerLink]="['home']" class="nav-link">
+    <a [routerLink]="['home']" class="nav-link" [ngSwitch]="role$ | async">
       <clr-icon shape="map" style="color: #fafafa;"></clr-icon>
       <span class="title">Project ER</span>
+      <span class="title" *ngSwitchCase="'government'" style="opacity: 0.1">/GOV</span>
+      <span class="title" *ngSwitchCase="'police'" style="opacity: 0.1">/POLICE</span>
     </a>
   </div>
-  <div class="header-nav" [clr-nav-level]="1" [ngSwitch]="(auth.user$ | async).role">
-    <app-basic-links *ngSwitchCase="'basic'"></app-basic-links>
-    <app-gov-links *ngSwitchCase="'goverment'"></app-gov-links>
-    <app-police-links *ngSwitchCase="'police'"></app-police-links>
+  <div class="header-nav" [clr-nav-level]="1" [ngSwitch]="role$ | async">
+    <app-basic-links *ngSwitchCase="ROLE_BASIC"></app-basic-links>
+    <app-gov-links *ngSwitchCase="ROLE_GOV"></app-gov-links>
+    <app-police-links *ngSwitchCase="ROLE_POLICE"></app-police-links>
    </div>
 
-  <form class="search" *ngIf="(auth.user$ | async).role == 'police'">
+  <form class="search" *ngIf="(role$ | async) == ROLE_POLICE">
     <label for="search_input">
       <input id="search_input" type="text" placeholder="Search for a car...">
     </label>

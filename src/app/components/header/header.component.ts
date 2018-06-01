@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../../services/auth.service';
-import {Observable} from 'rxjs';
 import {User} from '../../models/user';
 import {Router} from '@angular/router';
+import {map} from 'rxjs/operators';
+import {ROLE_BASIC, ROLE_GOV, ROLE_POLICE} from '../../models/roles';
 
 @Component({
   selector: 'app-header',
@@ -11,7 +12,14 @@ import {Router} from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  user$: Observable<User>;
+  ROLE_POLICE = ROLE_POLICE;
+  ROLE_GOV = ROLE_GOV;
+  ROLE_BASIC = ROLE_BASIC;
+
+  role$ = this.auth.user$.pipe(
+    map((user: User) => user.role)
+  );
+
   constructor(private auth: AuthService, private router: Router) {
   }
 
