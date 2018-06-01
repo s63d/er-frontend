@@ -10,11 +10,11 @@ import { JwtModule } from '@auth0/angular-jwt';
 
 import { HeaderComponent } from './components/header/header.component';
 import { LoginComponent } from './pages/login/login.component';
-import {tokenGetter} from './services/auth.service';
+import { tokenGetter } from './services/auth.service';
 import { CarsComponent } from './pages/basic/cars/cars.component';
 import { TripsComponent } from './pages/basic/trips/trips.component';
 import { InvoicesComponent } from './pages/basic/invoices/invoices.component';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegisterCarModalComponent } from './pages/basic/cars/components/register-car-modal/register-car-modal.component';
 import { CarsTableComponent } from './pages/basic/cars/components/cars-table/cars-table.component';
 import { YagaModule } from '@yaga/leaflet-ng2';
