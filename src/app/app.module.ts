@@ -21,6 +21,8 @@ import { YagaModule } from '@yaga/leaflet-ng2';
 import { GovLinksComponent } from './components/header/gov-links/gov-links.component';
 import { BasicLinksComponent } from './components/header/basic-links/basic-links.component';
 import { PoliceLinksComponent } from './components/header/police-links/police-links.component';
+import { AllCarsComponent } from './pages/police/all-cars/all-cars.component';
+import { CarDetailsComponent } from './pages/police/car-details/car-details.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { PoliceLinksComponent } from './components/header/police-links/police-li
     CarsTableComponent,
     GovLinksComponent,
     BasicLinksComponent,
-    PoliceLinksComponent
+    PoliceLinksComponent,
+    AllCarsComponent,
+    CarDetailsComponent
   ],
   imports: [
     BrowserModule,

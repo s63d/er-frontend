@@ -7,6 +7,9 @@ import {LoginGuard} from './guards/login.guard';
 import {TripsComponent} from './pages/basic/trips/trips.component';
 import {InvoicesComponent} from './pages/basic/invoices/invoices.component';
 import {RoleGuard} from './guards/role.guard';
+import {PoliceHomeComponent} from './pages/police/police-home/police-home.component';
+import {AllCarsComponent} from './pages/police/all-cars/all-cars.component';
+import {CarDetailsComponent} from './pages/police/car-details/car-details.component';
 
 const routes: Routes = [
   {
@@ -14,6 +17,9 @@ const routes: Routes = [
     component: LoginComponent,
     canActivate: [LoginGuard]
   },
+  /*
+   * Basic users
+   */
   {
     path: 'cars',
     component: CarsComponent,
@@ -36,6 +42,25 @@ const routes: Routes = [
     canActivate: [AuthGuard, RoleGuard],
     data: {
       role: 'BASIC'
+    }
+  },
+  /*
+   * Police users
+   */
+  {
+    path: 'police/cars',
+    component: AllCarsComponent,
+    canActivate: [AuthGuard, RoleGuard],
+    data: {
+      role: 'POLICE'
+    }
+  },
+  {
+    path: 'police/cars/:id',
+    component: CarDetailsComponent,
+    canActivate: [AuthGuard, RoleGuard],
+    data: {
+      role: 'POLICE'
     }
   },
 
