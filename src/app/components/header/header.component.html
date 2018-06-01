@@ -14,9 +14,9 @@
     <app-police-links *ngSwitchCase="ROLE_POLICE"></app-police-links>
    </div>
 
-  <form class="search" *ngIf="(role$ | async) == ROLE_POLICE">
+  <form class="search" *ngIf="(role$ | async) == ROLE_POLICE" (ngSubmit)="onSearch()">
     <label for="search_input">
-      <input id="search_input" type="text" placeholder="Search for a car...">
+      <input id="search_input" type="text" placeholder="Search for a car..." [(ngModel)]="searchTerm" name="searchTerm">
     </label>
   </form>
   <div class="header-actions">

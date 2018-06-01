@@ -18,7 +18,7 @@ export class AuthService {
 
   decodeToken = [
     map((token: string) => this.helper.decodeToken(token)),
-    map((token: any) => new User(token.userId, token.sub, token.userRole)),
+    map((token: any) => new User(token.userId, token.sub, token.userRole.toUpperCase())),
     tap((user: User) => this.userSubject.next(user))
   ];
 

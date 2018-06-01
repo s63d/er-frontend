@@ -17,17 +17,23 @@ export class HeaderComponent implements OnInit {
   ROLE_BASIC = ROLE_BASIC;
 
   role$ = this.auth.user$.pipe(
-    map((user: User) => user.role)
+    map((user: User) => (user || {}).role || '')
   );
+
+  searchTerm: String;
 
   constructor(private auth: AuthService, private router: Router) {
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   logout() {
     this.auth.logout();
     this.router.navigateByUrl('/login');
+  }
+
+
+  onSearch() {
+    this.router.navigateByUrl(`/police/cars/${this.searchTerm}`);
   }
 }
