@@ -9,8 +9,9 @@ import { InvoicesComponent } from './pages/basic/invoices/invoices.component';
 import { RoleGuard } from './guards/role.guard';
 import { AllCarsComponent } from './pages/police/all-cars/all-cars.component';
 import { CarDetailsComponent } from './pages/police/car-details/car-details.component';
-import { ROLE_BASIC, ROLE_GOV, ROLE_POLICE } from './models/roles';
+import {ROLE_ADMIN, ROLE_BASIC, ROLE_GOV, ROLE_POLICE} from './models/roles';
 import { CartrackersListComponent } from './pages/gov/cartrackers-list/cartrackers-list.component';
+import {AdminHomeComponent} from "./pages/admin/admin-home/admin-home.component";
 
 const routes: Routes = [
   {
@@ -76,6 +77,19 @@ const routes: Routes = [
       role: ROLE_GOV
     }
   },
+
+  /*
+   * Admin users
+   */
+  {
+    path: 'admin',
+    component: AdminHomeComponent,
+    canActivate: [AuthGuard, RoleGuard],
+    data: {
+      role: ROLE_ADMIN
+    }
+  },
+
   {
     path: '**',
     redirectTo: '/cars'

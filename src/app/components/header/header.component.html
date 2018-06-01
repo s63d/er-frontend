@@ -12,6 +12,7 @@
     <app-basic-links *ngSwitchCase="ROLE_BASIC"></app-basic-links>
     <app-gov-links *ngSwitchCase="ROLE_GOV"></app-gov-links>
     <app-police-links *ngSwitchCase="ROLE_POLICE"></app-police-links>
+    <app-admin-links *ngSwitchCase="ROLE_ADMIN"></app-admin-links>
    </div>
 
   <form class="search" *ngIf="(role$ | async) == ROLE_POLICE" (ngSubmit)="onSearch()">
