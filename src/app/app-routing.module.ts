@@ -7,7 +7,6 @@ import {LoginGuard} from './guards/login.guard';
 import {TripsComponent} from './pages/basic/trips/trips.component';
 import {InvoicesComponent} from './pages/basic/invoices/invoices.component';
 import {RoleGuard} from './guards/role.guard';
-import {PoliceHomeComponent} from './pages/police/police-home/police-home.component';
 import {AllCarsComponent} from './pages/police/all-cars/all-cars.component';
 import {CarDetailsComponent} from './pages/police/car-details/car-details.component';
 import {ROLE_BASIC, ROLE_GOV, ROLE_POLICE} from './models/roles';

@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit {
   ROLE_BASIC = ROLE_BASIC;
 
   role$ = this.auth.user$.pipe(
-    map((user: User) => (user || {}).role || '')
+    map((user: any) => user ? user.role : '')
   );
 
   searchTerm: String;
