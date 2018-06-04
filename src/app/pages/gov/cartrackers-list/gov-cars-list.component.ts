@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {GovernmentService} from '../../../services/government.service';
-import {Observable} from 'rxjs';
+import {combineLatest, merge, Observable} from 'rxjs';
 import {GovernmentVehicle} from '../../../models/government-vehicle';
 import {map} from 'rxjs/operators';
+import {v} from '@angular/core/src/render3';
 
 @Component({
   selector: 'app-cartrackers-list',
@@ -22,6 +23,18 @@ export class GovCarsListComponent implements OnInit {
 
     this.vehicles$ = page.pipe(
       map(p => p.content)
+    );
+  }
+
+  onAssignCartracker({ id }) {
+    const newVehicle$ = this.govService.assignCartracker(id);
+
+    this.vehicles$ = combineLatest(this.vehicles$, newVehicle$).pipe(
+      map((data) => {
+        const vehicles: GovernmentVehicle[] = data[0];
+        const vehicle: GovernmentVehicle = data[1];
+        return vehicles.map((vehicle1: GovernmentVehicle) => vehicle1.id === vehicle.id ? vehicle : vehicle1);
+      })
     );
   }
 

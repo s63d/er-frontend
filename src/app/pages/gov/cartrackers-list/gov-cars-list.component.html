@@ -13,7 +13,8 @@
   <clr-dg-row *clrDgItems="let vehicle of vehicles$ | async" [clrDgItem]="vehicle">
 
     <clr-dg-action-overflow>
-      <button class="action-item" (click)="alert('SIKE!')" [disabled]="vehicle.carTrackerId">Assign Cartracker</button>
+      <!--[disabled]="vehicle.carTrackerId"-->
+      <button class="action-item" (click)="onAssignCartracker(vehicle)">Assign Cartracker</button>
     </clr-dg-action-overflow>
 
     <clr-dg-cell>
