@@ -26,6 +26,7 @@ import { CarDetailsComponent } from './pages/police/car-details/car-details.comp
 import { CartrackersListComponent } from './pages/gov/cartrackers-list/cartrackers-list.component';
 import { AdminLinksComponent } from './components/header/admin-links/admin-links.component';
 import { AdminHomeComponent } from './pages/admin/admin-home/admin-home.component';
+import { UserListAdminComponent } from './pages/admin/admin-home/components/user-list-admin/user-list-admin.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { AdminHomeComponent } from './pages/admin/admin-home/admin-home.componen
     CarDetailsComponent,
     CartrackersListComponent,
     AdminLinksComponent,
-    AdminHomeComponent
+    AdminHomeComponent,
+    UserListAdminComponent
   ],
   imports: [
     BrowserModule,

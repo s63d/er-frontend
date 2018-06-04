@@ -20,7 +20,7 @@ const routes: Routes = [
     canActivate: [LoginGuard]
   },
   /*
-   * Basic users
+   * Basic users$
    */
   {
     path: 'cars',
@@ -47,7 +47,7 @@ const routes: Routes = [
     }
   },
   /*
-   * Police users
+   * Police users$
    */
   {
     path: 'police/cars',
@@ -67,7 +67,7 @@ const routes: Routes = [
   },
 
   /*
-   * Government users
+   * Government users$
    */
   {
     path: 'gov/cars',
@@ -79,7 +79,7 @@ const routes: Routes = [
   },
 
   /*
-   * Admin users
+   * Admin users$
    */
   {
     path: 'admin',

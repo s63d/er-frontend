@@ -42,7 +42,7 @@ export class AuthService {
     }).pipe(
       map(resp => resp.headers.get('Authorization').substr('Bearer '.length)),
       tap(token => this.saveToken(token)),
-      ... this.decodeToken
+      ...this.decodeToken
     );
   }
 
