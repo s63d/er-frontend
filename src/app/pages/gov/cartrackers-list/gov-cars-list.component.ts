@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {GovernmentService} from '../../../services/government.service';
-import {combineLatest, merge, Observable} from 'rxjs';
+import {combineLatest, Observable} from 'rxjs';
 import {GovernmentVehicle} from '../../../models/government-vehicle';
 import {map} from 'rxjs/operators';
-import {v} from '@angular/core/src/render3';
 
 @Component({
   selector: 'app-cartrackers-list',

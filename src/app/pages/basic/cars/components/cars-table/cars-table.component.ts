@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Observable, zip} from 'rxjs';
+import {Observable} from 'rxjs';
 import {Ownership} from '../../../../../models/ownership';
-import {OwnershipService} from '../../../../../services/ownership.service';
 import {Vehicle} from '../../../../../models/vehicle';
-import {map} from 'rxjs/operators';
+import {BasicService} from '../../../../../services/basic.service';
 
 @Component({
   selector: 'app-cars-table',
@@ -12,16 +11,14 @@ import {map} from 'rxjs/operators';
 })
 export class CarsTableComponent implements OnInit {
 
-  ownerships$: Observable<Ownership[]>;
-  constructor(private ownershipService: OwnershipService) { }
+  vehicles$: Observable<any[]>;
+  constructor(private basicService: BasicService) { }
 
   ngOnInit() {
-    this.ownerships$ = zip(this.ownershipService.loadActive(), this.ownershipService.loadPrevious()).pipe(
-      map(data => [...data[0], ...data[1]]),
-    );
+    this.vehicles$ = this.basicService.vehicles();
   }
 
   onSuspend(vehicle: Vehicle) {
-    this.ownershipService.suspendVehicle(vehicle).subscribe(console.log);
+    // this.ownershipService.suspendVehicle(vehicle).subscribe(console.log);
   }
 }

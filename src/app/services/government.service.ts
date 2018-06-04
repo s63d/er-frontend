@@ -13,10 +13,10 @@ export class GovernmentService {
 
 
   vehicles(page = 1): Observable<Page<GovernmentVehicle>> {
-    return this.http.get(`http://localhost:8080/api/gov/vehicles?page=${page - 1}`);
+    return this.http.get<Page<GovernmentVehicle>>(`http://localhost:8080/api/gov/vehicles?page=${page - 1}`);
   }
 
-  assignCartracker(id): Observable<GovernmentService> {
-    return this.http.post(`http://localhost:8080/api/gov/vehicles/${id}/assignCartracker`, {})
+  assignCartracker(id): Observable<GovernmentVehicle> {
+    return this.http.post<GovernmentVehicle>(`http://localhost:8080/api/gov/vehicles/${id}/assignCartracker`, {})
   }
 }
