@@ -1,19 +1,19 @@
 export class AdminUser {
   constructor(
     public id: number,
-    public email: String,
+    public email: string,
     public role: Role,
-    public firstName: String,
-    public lastName: String,
-    public address: String,
-    public postal: String,
-    public city: String,
+    public firstName: string,
+    public lastName: string,
+    public address: string,
+    public postal: string,
+    public city: string,
   ) {}
 }
 
 export class Role {
   constructor(
-    public name: String,
-    public description: String
+    public name: string,
+    public description: string
   ) {}
 }

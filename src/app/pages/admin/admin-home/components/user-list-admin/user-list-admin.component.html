@@ -11,9 +11,9 @@
   <clr-dg-column>Role</clr-dg-column>
   <clr-dg-row *clrDgItems="let user of users$ | async" [clrDgItem]="user">
 
-    <!--<clr-dg-action-overflow>-->
-      <!--<button class="action-item" (click)="onRoleChange(user)" [disabled]="!(ownership.vehicle.carTracker && !ownership.endDate)">Change Role</button>-->
-    <!--</clr-dg-action-overflow>-->
+    <clr-dg-action-overflow>
+      <button class="action-item" (click)="openRoleModal(user)">Change Role</button>
+    </clr-dg-action-overflow>
 
     <clr-dg-cell>{{ user.id }}</clr-dg-cell>
     <clr-dg-cell>{{ user.email }}</clr-dg-cell>
@@ -31,3 +31,37 @@
     </clr-dg-pagination>
   </clr-dg-footer>
 </clr-datagrid>
+
+<div class="modal" [hidden]="!showModal">
+  <div class="modal-dialog" role="dialog" aria-hidden="true">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button aria-label="Close" class="close" type="button" (click)="showModal = !showModal">
+          <clr-icon aria-hidden="true" shape="close"></clr-icon>
+        </button>
+        <h3 class="modal-title">Change role for {{ selectedUser ? selectedUser.email : 'user' }}</h3>
+      </div>
+      <div class="modal-body">
+        <section class="form-block">
+          <div class="form-group row">
+            <div class="offset-md-2 col-md-4">
+              <label for="role">Role</label>
+            </div>
+            <div class="col-md-4">
+              <div class="select">
+                <select id="role" name="role" [(ngModel)]="selectedRole">
+                  <option *ngFor="let role of roles$ | async" [ngValue]="role">{{ role.name }}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" type="button" (click)="showModal = !showModal">Cancel</button>
+        <button class="btn btn-primary" type="button" (click)="changeRole()">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-backdrop" aria-hidden="true" [hidden]="!showModal"></div>
