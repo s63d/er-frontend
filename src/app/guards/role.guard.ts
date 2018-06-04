@@ -4,7 +4,16 @@ import { Observable } from 'rxjs';
 import {AuthService} from '../services/auth.service';
 import {map, tap} from 'rxjs/operators';
 import {User} from '../models/user';
-import {ROLE_BASIC, ROLE_BASIC_HOME, ROLE_GOV, ROLE_GOV_HOME, ROLE_POLICE, ROLE_POLICE_HOME} from '../models/roles';
+import {
+  ROLE_ADMIN,
+  ROLE_ADMIN_HOME,
+  ROLE_BASIC,
+  ROLE_BASIC_HOME,
+  ROLE_GOV,
+  ROLE_GOV_HOME,
+  ROLE_POLICE,
+  ROLE_POLICE_HOME
+} from '../models/roles';
 
 @Injectable({
   providedIn: 'root'
@@ -33,6 +42,9 @@ export class RoleGuard implements CanActivate {
             return;
           case ROLE_BASIC:
             this.router.navigateByUrl(ROLE_BASIC_HOME);
+            return;
+          case ROLE_ADMIN:
+            this.router.navigateByUrl(ROLE_ADMIN_HOME);
             return;
         }
       }),

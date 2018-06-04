@@ -24,6 +24,9 @@ import { PoliceLinksComponent } from './components/header/police-links/police-li
 import { AllCarsComponent } from './pages/police/all-cars/all-cars.component';
 import { CarDetailsComponent } from './pages/police/car-details/car-details.component';
 import { GovCarsListComponent } from './pages/gov/cartrackers-list/gov-cars-list.component';
+import { AdminLinksComponent } from './components/header/admin-links/admin-links.component';
+import { AdminHomeComponent } from './pages/admin/admin-home/admin-home.component';
+import { UserListAdminComponent } from './pages/admin/admin-home/components/user-list-admin/user-list-admin.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +43,9 @@ import { GovCarsListComponent } from './pages/gov/cartrackers-list/gov-cars-list
     PoliceLinksComponent,
     AllCarsComponent,
     CarDetailsComponent,
+    AdminLinksComponent,
+    AdminHomeComponent,
+    UserListAdminComponent,
     GovCarsListComponent
   ],
   imports: [
