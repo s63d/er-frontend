@@ -2,7 +2,7 @@
   <h3 class="modal-title">Register new car</h3>
   <div class="modal-body">
     <p>Please fill in the following form to register your car.</p>
-    <form (ngSubmit)="onSubmit()" [hidden]="submitted">
+    <form (ngSubmit)="submitCar()" [hidden]="submitted">
       <section class="form-block">
         <div class="form-group row">
           <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12">
@@ -10,6 +10,7 @@
           </div>
           <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
             <input class="col-xs-12" type="text" id="licensePlate" placeholder="Enter license plate"
+                   [(ngModel)]="vehicleData.license"
                  required
                  name="carLicensePlate">
           </div>
@@ -24,6 +25,7 @@
           <div class="select">
             <select id="brand"
                     name="carBrand"
+                    (ngModelChange)="change($event)"
                     [(ngModel)]="selectedManufacturer">
               <!--<option value="Default">Select Brand...</option>-->
               <option *ngFor="let manufacturer of carManufacturers" [ngValue]="manufacturer">{{manufacturer.brand}}</option>
@@ -40,6 +42,7 @@
 
           <div class="select">
             <select id="model"
+                    [(ngModel)]="vehicleData.type"
                     name="carModel">
               <!--<option value="Default">Select Model...</option>-->
               <option *ngFor="let model of selectedManufacturer.models" [value]="model">{{model}}</option>
@@ -57,6 +60,7 @@
           <input
             class="col-xs-12"
             type="text" id="color" placeholder="Enter color"
+            [(ngModel)]="vehicleData.color"
                  required
                  name="carColor">
           </div>
@@ -70,6 +74,7 @@
 
           <input class="col-xs-12" type="number" id="weight" placeholder="Enter weight"
                  required
+                 [(ngModel)]="vehicleData.weight"
                  name="carWeight">
           </div>
         </div>
@@ -78,6 +83,6 @@
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-outline" (click)="toggle()">Cancel</button>
-    <button type="button" class="btn btn-primary" (click)="toggle()">Register</button>
+    <button type="submit" class="btn btn-primary" (click)="submitCar(); toggle()">Register</button>
   </div>
 </clr-modal>
