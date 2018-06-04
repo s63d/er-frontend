@@ -18,4 +18,8 @@ export class BasicService {
     const body = new HttpParams({fromObject: vehicleData});
     return this.http.post('http://localhost:8080/api/vehicles', body);
   }
+
+  suspendVehicle(vehicleId: String) {
+    return this.http.post(`http://localhost:8080/api/vehicles/${vehicleId}/suspend`, {});
+  }
 }

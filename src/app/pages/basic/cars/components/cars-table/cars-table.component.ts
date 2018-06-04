@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {Observable} from 'rxjs';
-import {Ownership} from '../../../../../models/ownership';
-import {Vehicle} from '../../../../../models/vehicle';
 import {BasicService} from '../../../../../services/basic.service';
 
 @Component({
@@ -18,7 +16,7 @@ export class CarsTableComponent implements OnInit {
     this.vehicles$ = this.basicService.vehicles();
   }
 
-  onSuspend(vehicle: Vehicle) {
-    // this.ownershipService.suspendVehicle(vehicle).subscribe(console.log);
+  onSuspend({ id }) {
+    this.basicService.suspendVehicle(id).subscribe(console.log);
   }
 }
