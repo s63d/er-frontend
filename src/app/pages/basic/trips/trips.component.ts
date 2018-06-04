@@ -15,7 +15,7 @@ export class TripsComponent implements OnInit {
     {
       'tripId': 1,
       'length': 0,
-      'polyline': '',
+      'polyline': {},
       'date': '2018-05-21T12:28:02.000+0000',
       'carTrackerId': '8873028c-3358-42b7-8199-a72901d10e70'
     },
