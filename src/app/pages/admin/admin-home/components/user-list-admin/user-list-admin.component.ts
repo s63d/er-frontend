@@ -3,6 +3,7 @@ import {AdminService} from "../../../../../services/admin.service";
 import {Observable} from "rxjs/Observable";
 import {AdminUser} from "../../../../../models/adminUser";
 import {map} from "rxjs/operators";
+import {Page} from "../../../../../models/page";
 
 @Component({
   selector: 'app-user-list-admin',
@@ -12,13 +13,18 @@ import {map} from "rxjs/operators";
 export class UserListAdminComponent implements OnInit {
 
   users$: Observable<AdminUser[]>;
+  page$: Observable<Page<AdminUser>>;
+
+  activePage: number;
 
   constructor(private adminService: AdminService) { }
 
   ngOnInit() {
-    this.users$ = this.adminService.getAllUsers()
+    this.activePage = 1;
+    this.page$ = this.adminService.getAllUsers(this.activePage);
+    this.users$ = this.page$
       .pipe(
-        map((p: any) => p.content)
+        map((p: Page<AdminUser>) => p.content)
       )
   }
 
