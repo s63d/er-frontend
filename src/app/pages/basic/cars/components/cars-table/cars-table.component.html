@@ -11,9 +11,9 @@
   <clr-dg-column>Status</clr-dg-column>
   <clr-dg-row *clrDgItems="let vehicle of vehicles$ | async" [clrDgItem]="vehicle">
 
-    <!--<clr-dg-action-overflow>-->
-      <!--<button class="action-item" (click)="onSuspend(ownership.vehicle)" [disabled]="!(ownership.vehicle.carTracker && !ownership.endDate)">Suspend</button>-->
-    <!--</clr-dg-action-overflow>-->
+    <clr-dg-action-overflow>
+      <button class="action-item" (click)="onSuspend(vehicle)" [disabled]="vehicle.status != 'APPROVED'">Suspend</button>
+    </clr-dg-action-overflow>
 
     <clr-dg-cell>
       <a href="###">
@@ -26,11 +26,9 @@
     <clr-dg-cell>{{ vehicle.color }}</clr-dg-cell>
     <clr-dg-cell>{{ vehicle.registrationDate | date }}</clr-dg-cell>
     <clr-dg-cell>{{ (vehicle.endDate | date) || "-" }}</clr-dg-cell>
-    <clr-dg-cell>{{ vehicle.status }}</clr-dg-cell>
-
-    <!--<clr-dg-cell *ngIf="ownership.vehicle.carTracker && !ownership.endDate"><span class="label label-success">Approved</span></clr-dg-cell>-->
-    <!--<clr-dg-cell *ngIf="!ownership.vehicle.carTracker"><span class="label label-info">Pending</span></clr-dg-cell>-->
-    <!--<clr-dg-cell *ngIf="ownership.endDate"><span class="label label-danger">Suspended</span></clr-dg-cell>-->
+    <clr-dg-cell *ngIf="vehicle.status == 'APPROVED'"><span class="label label-success">Approved</span></clr-dg-cell>
+    <clr-dg-cell *ngIf="vehicle.status == 'PENDING'"><span class="label label-info">Pending</span></clr-dg-cell>
+    <clr-dg-cell *ngIf="vehicle.status == 'SUSPENDED'"><span class="label label-danger">Suspended</span></clr-dg-cell>
 
   </clr-dg-row>
 
