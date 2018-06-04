@@ -11,11 +11,11 @@ export class OwnershipService {
   constructor(private http: HttpClient) { }
 
   loadActive() {
-    return this.http.get<Ownership[]>('http://localhost:8080/api/vehicles/current');
+    return this.http.get<Ownership[]>('http://localhost:8080/api/vehicles');
   }
 
   loadPrevious() {
-    return this.http.get<Ownership[]>('http://localhost:8080/api/vehicles/history');
+    return this.http.get<Ownership[]>('http://localhost:8080/api/vehicles');
   }
 
   suspendVehicle(vehicle: Vehicle) {

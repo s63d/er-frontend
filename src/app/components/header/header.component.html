@@ -4,8 +4,8 @@
     <a [routerLink]="['home']" class="nav-link" [ngSwitch]="role$ | async">
       <clr-icon shape="map" style="color: #fafafa;"></clr-icon>
       <span class="title">Project ER</span>
-      <span class="title" *ngSwitchCase="'government'" style="opacity: 0.1">/GOV</span>
-      <span class="title" *ngSwitchCase="'police'" style="opacity: 0.1">/POLICE</span>
+      <span class="title" *ngSwitchCase="ROLE_GOV" style="opacity: 0.1">/GOV</span>
+      <span class="title" *ngSwitchCase="ROLE_POLICE" style="opacity: 0.1">/POLICE</span>
     </a>
   </div>
   <div class="header-nav" [clr-nav-level]="1" [ngSwitch]="role$ | async">
