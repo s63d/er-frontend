@@ -10,7 +10,7 @@ import { RoleGuard } from './guards/role.guard';
 import { AllCarsComponent } from './pages/police/all-cars/all-cars.component';
 import { CarDetailsComponent } from './pages/police/car-details/car-details.component';
 import { ROLE_BASIC, ROLE_GOV, ROLE_POLICE } from './models/roles';
-import { CartrackersListComponent } from './pages/gov/cartrackers-list/cartrackers-list.component';
+import { GovCarsListComponent } from './pages/gov/cartrackers-list/gov-cars-list.component';
 
 const routes: Routes = [
   {
@@ -70,7 +70,7 @@ const routes: Routes = [
    */
   {
     path: 'gov/cars',
-    component: CartrackersListComponent,
+    component: GovCarsListComponent,
     canActivate: [AuthGuard, RoleGuard],
     data: {
       role: ROLE_GOV

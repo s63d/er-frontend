@@ -23,7 +23,7 @@ import { BasicLinksComponent } from './components/header/basic-links/basic-links
 import { PoliceLinksComponent } from './components/header/police-links/police-links.component';
 import { AllCarsComponent } from './pages/police/all-cars/all-cars.component';
 import { CarDetailsComponent } from './pages/police/car-details/car-details.component';
-import { CartrackersListComponent } from './pages/gov/cartrackers-list/cartrackers-list.component';
+import { GovCarsListComponent } from './pages/gov/cartrackers-list/gov-cars-list.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +40,7 @@ import { CartrackersListComponent } from './pages/gov/cartrackers-list/cartracke
     PoliceLinksComponent,
     AllCarsComponent,
     CarDetailsComponent,
-    CartrackersListComponent
+    GovCarsListComponent
   ],
   imports: [
     BrowserModule,

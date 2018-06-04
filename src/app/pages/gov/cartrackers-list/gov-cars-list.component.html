@@ -1,0 +1,41 @@
+<clr-datagrid>
+  <clr-dg-placeholder>We couldn't find any cars!</clr-dg-placeholder>
+
+  <clr-dg-column>Car ID</clr-dg-column>
+  <clr-dg-column>Brand</clr-dg-column>
+  <clr-dg-column>Type</clr-dg-column>
+  <clr-dg-column>Weight</clr-dg-column>
+  <clr-dg-column>Color</clr-dg-column>
+  <clr-dg-column>Registration date</clr-dg-column>
+  <clr-dg-column>End date</clr-dg-column>
+  <clr-dg-column>Cartracker</clr-dg-column>
+
+  <clr-dg-row *clrDgItems="let vehicle of vehicles$ | async" [clrDgItem]="vehicle">
+
+    <clr-dg-action-overflow>
+      <button class="action-item" (click)="alert('SIKE!')" [disabled]="vehicle.carTrackerId">Assign Cartracker</button>
+    </clr-dg-action-overflow>
+
+    <clr-dg-cell>
+      <a href="###">
+        {{ vehicle.id | slice:0:7}}
+      </a>
+    </clr-dg-cell>
+    <clr-dg-cell>{{ vehicle.brand }}</clr-dg-cell>
+    <clr-dg-cell>{{ vehicle.type }}</clr-dg-cell>
+    <clr-dg-cell>{{ vehicle.weight }} kg</clr-dg-cell>
+    <clr-dg-cell>{{ vehicle.color }}</clr-dg-cell>
+    <clr-dg-cell>{{ vehicle.registrationDate | date }}</clr-dg-cell>
+    <clr-dg-cell>{{ (vehicle.endDate | date) || "-" }}</clr-dg-cell>
+    <clr-dg-cell>{{ vehicle.carTrackerId || '-'}}</clr-dg-cell>
+
+
+  </clr-dg-row>
+
+  <clr-dg-footer>
+    <clr-dg-pagination #pagination [clrDgPageSize]="10">
+      {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
+      of {{pagination.totalItems}} cars
+    </clr-dg-pagination>
+  </clr-dg-footer>
+</clr-datagrid>
