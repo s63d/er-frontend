@@ -1,0 +1,19 @@
+<clr-datagrid [(clrDgSelected)]="selectedTrips" [clDgRowSelection]="true">
+  <clr-dg-placeholder>We couldn't find any trips</clr-dg-placeholder>
+  <clr-dg-column>Trip ID</clr-dg-column>
+  <clr-dg-column>Distance</clr-dg-column>
+  <clr-dg-column>Date</clr-dg-column>
+
+  <clr-dg-row *clrDgItems="let trip of trips$ | async" [clrDgItem]="trip">
+    <clr-dg-cell>{{ trip.tripId }}</clr-dg-cell>
+    <clr-dg-cell>{{ trip.length / 1000 }} km</clr-dg-cell>
+    <clr-dg-cell>{{ trip.date | date }}</clr-dg-cell>
+  </clr-dg-row>
+
+  <clr-dg-footer>
+    <clr-dg-pagination #pagination [clrDgPageSize]="10">
+      {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
+      of {{pagination.totalItems}} trips
+    </clr-dg-pagination>
+  </clr-dg-footer>
+</clr-datagrid>

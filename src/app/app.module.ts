@@ -24,6 +24,7 @@ import { PoliceLinksComponent } from './components/header/police-links/police-li
 import { AllCarsComponent } from './pages/police/all-cars/all-cars.component';
 import { CarDetailsComponent } from './pages/police/car-details/car-details.component';
 import { GovCarsListComponent } from './pages/gov/cartrackers-list/gov-cars-list.component';
+import { TripListComponent } from './pages/basic/trips/components/trip-list/trip-list.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { GovCarsListComponent } from './pages/gov/cartrackers-list/gov-cars-list
     PoliceLinksComponent,
     AllCarsComponent,
     CarDetailsComponent,
-    GovCarsListComponent
+    GovCarsListComponent,
+    TripListComponent
   ],
   imports: [
     BrowserModule,

@@ -1,112 +1,22 @@
 <div class="row">
-  <div class="col-md-12 col-lg-8">
+  <div class="col-md-12 col-lg-12">
     <div class="row">
       <div class="col-md-12">
         <div class="card">
           <yaga-map [zoom]="8" [lat]="48.210033" [lng]="16.363449">
-            <yaga-polyline *ngFor="let trip of selectedTrips" [geoJSON]="trip.polyline"></yaga-polyline>
             <yaga-tile-layer [url]="'http://a.tile.openstreetmap.org/{z}/{x}/{y}.png'"></yaga-tile-layer>
           </yaga-map>
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-12">
-        <h5>Alfa Romeo - 147 - Zwart </h5>
-        <clr-datagrid [(clrDgSelected)]="selectedTrips" [clDgRowSelection]="true">
-          <clr-dg-placeholder>We couldn't find any trips</clr-dg-placeholder>
-          <clr-dg-column>Trip ID</clr-dg-column>
-          <clr-dg-column>Distance</clr-dg-column>
-          <clr-dg-column>Date</clr-dg-column>
 
-          <clr-dg-row *clrDgItems="let trip of trips$ | async" [clrDgItem]="trip">
-            <clr-dg-cell>{{ trip.tripId }}</clr-dg-cell>
-            <clr-dg-cell>{{ trip.length / 1000 }} km</clr-dg-cell>
-            <clr-dg-cell>{{ trip.date | date }}</clr-dg-cell>
-          </clr-dg-row>
+    <div *ngFor="let vehicle of vehicles$ | async">
+      <h1>{{vehicle.brand}} - {{ vehicle.type }} - {{ vehicle.color }}(<small class="text-muted"><a href="">{{ vehicle.id | slice:0:7 }}</a></small>)</h1>
 
-          <clr-dg-footer>
-            <clr-dg-pagination #pagination [clrDgPageSize]="10">
-              {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
-              of {{pagination.totalItems}} trips
-            </clr-dg-pagination>
-          </clr-dg-footer>
-        </clr-datagrid>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <h5>Alfa Romeo - 147 - Zwart </h5>
-        <clr-datagrid [(clrDgSelected)]="selectedTrips" [clDgRowSelection]="true">
-          <clr-dg-placeholder>We couldn't find any trips</clr-dg-placeholder>
-          <clr-dg-column>Trip ID</clr-dg-column>
-          <clr-dg-column>Distance</clr-dg-column>
-          <clr-dg-column>Date</clr-dg-column>
-
-          <clr-dg-row *clrDgItems="let trip of trips$ | async" [clrDgItem]="trip">
-            <clr-dg-cell>{{ trip.tripId }}</clr-dg-cell>
-            <clr-dg-cell>{{ trip.length / 1000 }} km</clr-dg-cell>
-            <clr-dg-cell>{{ trip.date | date }}</clr-dg-cell>
-          </clr-dg-row>
-
-          <clr-dg-footer>
-            <clr-dg-pagination #pagination [clrDgPageSize]="10">
-              {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
-              of {{pagination.totalItems}} trips
-            </clr-dg-pagination>
-          </clr-dg-footer>
-        </clr-datagrid>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <h5>Alfa Romeo - 147 - Zwart </h5>
-        <clr-datagrid [(clrDgSelected)]="selectedTrips" [clDgRowSelection]="true">
-          <clr-dg-placeholder>We couldn't find any trips</clr-dg-placeholder>
-          <clr-dg-column>Trip ID</clr-dg-column>
-          <clr-dg-column>Distance</clr-dg-column>
-          <clr-dg-column>Date</clr-dg-column>
-
-          <clr-dg-row *clrDgItems="let trip of trips$ | async" [clrDgItem]="trip">
-            <clr-dg-cell>{{ trip.tripId }}</clr-dg-cell>
-            <clr-dg-cell>{{ trip.length / 1000 }} km</clr-dg-cell>
-            <clr-dg-cell>{{ trip.date | date }}</clr-dg-cell>
-          </clr-dg-row>
-
-          <clr-dg-footer>
-            <clr-dg-pagination #pagination [clrDgPageSize]="10">
-              {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
-              of {{pagination.totalItems}} trips
-            </clr-dg-pagination>
-          </clr-dg-footer>
-        </clr-datagrid>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <h5>Alfa Romeo - 147 - Zwart </h5>
-        <clr-datagrid [(clrDgSelected)]="selectedTrips" [clDgRowSelection]="true">
-          <clr-dg-placeholder>We couldn't find any trips</clr-dg-placeholder>
-          <clr-dg-column>Trip ID</clr-dg-column>
-          <clr-dg-column>Distance</clr-dg-column>
-          <clr-dg-column>Date</clr-dg-column>
-
-          <clr-dg-row *clrDgItems="let trip of trips$ | async" [clrDgItem]="trip">
-            <clr-dg-cell>{{ trip.tripId }}</clr-dg-cell>
-            <clr-dg-cell>{{ trip.length / 1000 }} km</clr-dg-cell>
-            <clr-dg-cell>{{ trip.date | date }}</clr-dg-cell>
-          </clr-dg-row>
-
-          <clr-dg-footer>
-            <clr-dg-pagination #pagination [clrDgPageSize]="10">
-              {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
-              of {{pagination.totalItems}} trips
-            </clr-dg-pagination>
-          </clr-dg-footer>
-        </clr-datagrid>
-      </div>
+      <span *ngIf="vehicle.status == 'APPROVED'" class="label label-success">Approved</span>
+      <span *ngIf="vehicle.status == 'PENDING'" class="label label-info">Pending</span>
+      <span *ngIf="vehicle.status == 'SUSPENDED'" class="label label-danger">Suspended</span>
+      <app-trip-list [vehicleId]="vehicle.id"></app-trip-list>
     </div>
   </div>
-
-
 </div>
