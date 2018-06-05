@@ -51,7 +51,7 @@ import { GovCarsListComponent } from './pages/gov/cartrackers-list/gov-cars-list
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
-        whitelistedDomains: ['localhost:8081', 'localhost:8080', 'localhost:8082'],
+        whitelistedDomains: ['localhost:8081', 'localhost:8080', 'localhost:8082', 'localhost:8084'],
       }
     }),
     BrowserAnimationsModule,

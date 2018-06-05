@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {of, range} from 'rxjs';
+import {Observable, of, range} from 'rxjs';
+import {HttpClient} from '@angular/common/http';
+import {BasicInvoice} from '../../../models/basic-invoice';
 
 @Component({
   selector: 'app-invoices',
@@ -8,37 +10,13 @@ import {of, range} from 'rxjs';
 })
 export class InvoicesComponent implements OnInit {
 
-  invoices$ = of([
-    {
-      id: '1',
-      status: 'paid',
-      date: new Date(),
-      month: 'January'
-    },
-    {
-      id: '2',
-      status: 'open',
-      date: new Date(),
-      month: 'February'
-    },
-    {
-      id: '3',
-      status: 'due',
-      date: new Date(),
-      month: 'March'
-    },
-    {
-      id: '4',
-      status: 'paid',
-      date: new Date(),
-      month: 'May'
-    }
-  ]);
-
-  constructor() {
+  invoices$: Observable<BasicInvoice[]>;
+  constructor(private http: HttpClient) {
   }
 
   ngOnInit() {
+    this.invoices$ = this.http.get<BasicInvoice[]>('http://localhost:8084/api/invoices?userId=1');
   }
+
 
 }
