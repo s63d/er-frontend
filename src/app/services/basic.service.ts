@@ -13,19 +13,19 @@ export class BasicService {
   constructor(private http: HttpClient) { }
 
   vehicles(page = 1) {
-    return this.http.get<BasicVehicle[]>('http://localhost:8080/api/vehicles');
+    return this.http.get<BasicVehicle[]>('http://localhost/api/vehicles');
   }
 
   registerVehicle(vehicleData: {}) {
     const body = new HttpParams({fromObject: vehicleData});
-    return this.http.post('http://localhost:8080/api/vehicles', body);
+    return this.http.post('http://localhost/api/vehicles', body);
   }
 
   suspendVehicle(vehicleId: String) {
-    return this.http.post(`http://localhost:8080/api/vehicles/${vehicleId}/suspend`, {});
+    return this.http.post(`http://localhost/api/vehicles/${vehicleId}/suspend`, {});
   }
 
   trips(vehicleId: String, page: number = 1) {
-    return this.http.get<Page<Trip>>(`http://localhost:8082/api/trips?vehicleId=${vehicleId}`);
+    return this.http.get<Page<Trip>>(`http://localhost/api/trips?vehicleId=${vehicleId}`);
   }
 }

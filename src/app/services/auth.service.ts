@@ -36,7 +36,7 @@ export class AuthService {
   login(username, password) {
     const body = new HttpParams({fromObject: {username, password}});
 
-    return this.http.post('http://localhost:8081/login', body.toString(), {
+    return this.http.post('http://localhost/login', body.toString(), {
       headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
       observe: 'response'
     }).pipe(

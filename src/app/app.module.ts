@@ -53,7 +53,7 @@ import { TripListComponent } from './pages/basic/trips/components/trip-list/trip
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
-        whitelistedDomains: ['localhost:8081', 'localhost:8080', 'localhost:8082', 'localhost:8084'],
+        whitelistedDomains: ['localhost'],
       }
     }),
     BrowserAnimationsModule,
