@@ -47,7 +47,6 @@ import { TripListComponent } from './pages/basic/trips/components/trip-list/trip
     AdminLinksComponent,
     AdminHomeComponent,
     UserListAdminComponent,
-    GovCarsListComponent
     GovCarsListComponent,
     TripListComponent
   ],
