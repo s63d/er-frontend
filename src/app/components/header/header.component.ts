@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../../services/auth.service';
-import {User} from '../../models/user';
 import {Router} from '@angular/router';
 import {map} from 'rxjs/operators';
-import {ROLE_BASIC, ROLE_GOV, ROLE_POLICE} from '../../models/roles';
+import {ROLE_ADMIN, ROLE_BASIC, ROLE_GOV, ROLE_POLICE} from '../../models/roles';
 
 @Component({
   selector: 'app-header',
@@ -15,6 +14,7 @@ export class HeaderComponent implements OnInit {
   ROLE_POLICE = ROLE_POLICE;
   ROLE_GOV = ROLE_GOV;
   ROLE_BASIC = ROLE_BASIC;
+  ROLE_ADMIN = ROLE_ADMIN;
 
   role$ = this.auth.user$.pipe(
     map((user: any) => user ? user.role : '')
@@ -22,7 +22,7 @@ export class HeaderComponent implements OnInit {
 
   searchTerm: String;
 
-  constructor(private auth: AuthService, private router: Router) {
+  constructor(protected auth: AuthService, private router: Router) {
   }
 
   ngOnInit() {}
