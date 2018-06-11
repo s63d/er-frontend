@@ -1,3 +1,78 @@
-<p>
-  invoice-detail-user works!
-</p>
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">#INV{{invoice.id}}</h3>
+  </div>
+  <div class="card-block">
+    <div class="row">
+      <div class="col-md-6">
+        <p class="h3">Project ER</p>
+        <address>
+          Street Address<br>
+          State, City<br>
+          Region, Postal Code<br>
+          <a href="mailto:info@ersols.online">info@ersols.online</a>
+        </address>
+      </div>
+      <div class="col-md-6 text-right">
+        <p class="h3">Goos van den Bekerom</p>
+        <address>
+          Ekkerstraat 28<br>
+          5616 SP, Eindhoven<br>
+          Noord-Brabant<br>
+          <a href="">goosje@hotmail.com</a>
+        </address>
+      </div>
+    </div>
+  </div>
+  <div class="card-block">
+    <table class="table">
+      <thead>
+      <tr>
+        <th></th>
+        <th class="left">Trip</th>
+        <th>Distance</th>
+        <th>Rate</th>
+        <th style="text-align:right; width: 1%;">Price</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let line of invoice.invoiceLine; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td class="left">
+            Trip <a href="">#{{ line.id }}</a> <br>
+            <span class="text-muted">From a to b</span>
+          </td>
+          <td>
+            {{line.length / 1000}} km
+          </td>
+          <td>
+            {{ line.rate.category }}
+          </td>
+          <td style="text-align:right;">
+            &euro;{{ line.price }}
+          </td>
+        </tr>
+        <tr>
+          <td colspan="4" class="text-right">Subtotal</td>
+          <td class="text-right">{{ invoice.price | currency:'EUR'}}</td>
+        </tr>
+        <tr>
+          <td colspan="4" class="font-w600 text-right">Vat Rate</td>
+          <td class="text-right">20%</td>
+        </tr>
+        <tr>
+          <td colspan="4" class="font-w600 text-right">Vat Due</td>
+          <td class="text-right">{{ invoice.price * 0.2 | currency:'EUR'}}</td>
+        </tr>
+        <tr>
+          <td colspan="4" class="font-weight-bold text-uppercase text-right">Total Due</td>
+          <td class="font-weight-bold text-right">{{invoice.price * 1.2 | currency:'EUR'}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+    <div class="card-footer">
+      <button class="btn btn-primary btn-link" onclick="javascript:window.print();"><clr-icon shape="wallet"></clr-icon> Pay</button>
+      <button class="btn btn-secondary btn-link float-md-right" onclick="javascript:window.print();"><clr-icon shape="printer"></clr-icon> Print</button>
+  </div>
+</div>
