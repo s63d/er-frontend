@@ -4,6 +4,7 @@ import {BehaviorSubject, Observable, of} from 'rxjs';
 import {User} from '../models/user';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import {map, tap} from 'rxjs/operators';
+import { BASE_URL } from '../constants';
 
 
 const TOKEN_KEY = 'access_token';
@@ -36,7 +37,7 @@ export class AuthService {
   login(username, password) {
     const body = new HttpParams({fromObject: {username, password}});
 
-    return this.http.post('http://localhost/login', body.toString(), {
+    return this.http.post(`${BASE_URL}/login`, body.toString(), {
       headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
       observe: 'response'
     }).pipe(

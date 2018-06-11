@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Observable} from 'rxjs';
-import {filter, map, map, tap} from 'rxjs/operators';
+import {filter, map, tap} from 'rxjs/operators';
 import * as polylineUtil from '@mapbox/polyline';
 import {BasicService} from '../../../services/basic.service';
 import {BasicVehicle} from '../../../models/basic-vehicle';

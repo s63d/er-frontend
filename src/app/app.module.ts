@@ -59,7 +59,7 @@ import { TripListComponent } from './pages/basic/trips/components/trip-list/trip
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
-        whitelistedDomains: ['localhost'],
+        whitelistedDomains: ['localhost', 'ersols.online'],
       }
     }),
     BrowserAnimationsModule,

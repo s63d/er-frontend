@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {BasicInvoice} from '../../../models/basic-invoice';
 import {AuthService} from '../../../services/auth.service';
 import {filter, flatMap} from 'rxjs/operators';
+import { API_BASE_URL } from '../../../constants';
 
 @Component({
   selector: 'app-invoices',
@@ -21,7 +22,7 @@ export class InvoicesComponent implements OnInit {
     this.invoices$ =
       this.auth.user$.pipe(
         filter(user => user.email === 'goosje@hotmail.com'),
-        flatMap(x =>  this.http.get<BasicInvoice[]>('http://localhost:8084/api/invoices?userId=1'))
+        flatMap(x =>  this.http.get<BasicInvoice[]>(`${API_BASE_URL}/invoices?userId=1`))
       );
   }
 
