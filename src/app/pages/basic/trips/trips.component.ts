@@ -4,7 +4,7 @@ import {filter, map, tap} from 'rxjs/operators';
 import * as polylineUtil from '@mapbox/polyline';
 import {BasicService} from '../../../services/basic.service';
 import {BasicVehicle} from '../../../models/basic-vehicle';
-import groupBy from 'lodash/groupBy';
+import * as _ from 'lodash';
 
 
 @Component({
@@ -79,7 +79,7 @@ export class TripsComponent implements OnInit {
 
     this.vehicles$ = this.basicService.vehicles();
     this.statuses$ = this.vehicles$.pipe(
-      map(vehicles => groupBy(vehicles, 'status')),
+      map(vehicles => _.groupBy(vehicles, 'status')),
       map(groups => Object.keys(groups)),
       tap(console.log)
     );

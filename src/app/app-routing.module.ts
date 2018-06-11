@@ -12,6 +12,7 @@ import { CarDetailsComponent } from './pages/police/car-details/car-details.comp
 import { ROLE_ADMIN, ROLE_BASIC, ROLE_GOV, ROLE_POLICE } from './models/roles';
 import {AdminHomeComponent} from "./pages/admin/admin-home/admin-home.component";
 import {GovCarsListComponent} from "./pages/gov/cartrackers-list/gov-cars-list.component";
+import { InvoiceDetailUserComponent } from './pages/basic/invoices/invoice-detail-user/invoice-detail-user.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,14 @@ const routes: Routes = [
   {
     path: 'invoices',
     component: InvoicesComponent,
+    canActivate: [AuthGuard, RoleGuard],
+    data: {
+      role: ROLE_BASIC
+    }
+  },
+  {
+    path: 'invoices/detail',
+    component: InvoiceDetailUserComponent,
     canActivate: [AuthGuard, RoleGuard],
     data: {
       role: ROLE_BASIC

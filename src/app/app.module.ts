@@ -28,6 +28,7 @@ import { AdminLinksComponent } from './components/header/admin-links/admin-links
 import { AdminHomeComponent } from './pages/admin/admin-home/admin-home.component';
 import { UserListAdminComponent } from './pages/admin/admin-home/components/user-list-admin/user-list-admin.component';
 import { TripListComponent } from './pages/basic/trips/components/trip-list/trip-list.component';
+import { InvoiceDetailUserComponent } from './pages/basic/invoices/invoice-detail-user/invoice-detail-user.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { TripListComponent } from './pages/basic/trips/components/trip-list/trip
     AdminHomeComponent,
     UserListAdminComponent,
     GovCarsListComponent,
-    TripListComponent
+    TripListComponent,
+    InvoiceDetailUserComponent
   ],
   imports: [
     BrowserModule,
