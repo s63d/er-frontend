@@ -4,6 +4,7 @@ import {BasicVehicle} from '../models/basic-vehicle';
 import {Page} from '../models/page';
 import {Trip} from '../models/basic-invoice';
 import { API_BASE_URL } from '../constants';
+import { Vehicle } from '../models/vehicle';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,7 @@ export class BasicService {
 
   registerVehicle(vehicleData: {}) {
     const body = new HttpParams({fromObject: vehicleData});
-    return this.http.post(`${API_BASE_URL}/vehicles`, body);
+    return this.http.post<BasicVehicle>(`${API_BASE_URL}/vehicles`, body);
   }
 
   suspendVehicle(vehicleId: String) {

@@ -1,6 +1,8 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import * as carManufacturers from './data/car-data';
 import {BasicService} from '../../../../../services/basic.service';
+import { Vehicle } from '../../../../../models/vehicle';
+import { BasicVehicle } from '../../../../../models/basic-vehicle';
 
 @Component({
   selector: 'app-register-car-modal',
@@ -10,10 +12,11 @@ import {BasicService} from '../../../../../services/basic.service';
 export class RegisterCarModalComponent implements OnInit {
 
   @Input() opened = true;
-  @Output() toggledOpened = new EventEmitter<boolean>();
+  @Output() onOpenedToggled = new EventEmitter<boolean>();
+  @Output() onNewVehicle = new EventEmitter<BasicVehicle>();
 
   vehicleData  = {
-    license: '39-GLD-9',
+    license: '',
     type: '',
     brand: '',
     weight: 0,
@@ -24,17 +27,16 @@ export class RegisterCarModalComponent implements OnInit {
   selectedManufacturer = {models: []};
   constructor(private basicService: BasicService) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   toggle() {
     this.opened = false;
-    this.toggledOpened.emit(this.opened);
+    this.onOpenedToggled.emit(this.opened);
   }
 
-
   submitCar() {
-    this.basicService.registerVehicle(this.vehicleData).subscribe(console.log);
+    this.basicService.registerVehicle(this.vehicleData)
+      .subscribe(vehicle => this.onNewVehicle.emit(vehicle));
   }
 
   change({brand}) {

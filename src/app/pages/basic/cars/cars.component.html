@@ -1,5 +1,5 @@
 <div class="col-md-12">
   <button class="btn btn-primary-outline btn-sm" (click)="opened = true">Register car</button>
-  <app-cars-table></app-cars-table>
+  <app-cars-table [vehicles]="vehicles$ | async"></app-cars-table>
 </div>
-<app-register-car-modal [(opened)]="opened"></app-register-car-modal>
+<app-register-car-modal [(opened)]="opened" (onOpenedToggled)="opened = $event" (onNewVehicle)="addVehicle($event)"></app-register-car-modal>

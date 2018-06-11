@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {Observable} from 'rxjs';
 import {BasicService} from '../../../../../services/basic.service';
+import { BasicVehicle } from '../../../../../models/basic-vehicle';
 
 @Component({
   selector: 'app-cars-table',
@@ -9,14 +10,12 @@ import {BasicService} from '../../../../../services/basic.service';
 })
 export class CarsTableComponent implements OnInit {
 
-  vehicles$: Observable<any[]>;
+  @Input() vehicles: BasicVehicle[];
   constructor(private basicService: BasicService) { }
 
-  ngOnInit() {
-    this.vehicles$ = this.basicService.vehicles();
-  }
+  ngOnInit() {}
 
   onSuspend({ id }) {
-    this.basicService.suspendVehicle(id).subscribe(console.log);
+    this.basicService.suspendVehicle(id).subscribe(console.log); // TODO: merge with vehicles$?
   }
 }

@@ -9,7 +9,7 @@
   <clr-dg-column>Registration date</clr-dg-column>
   <clr-dg-column>End date</clr-dg-column>
   <clr-dg-column>Status</clr-dg-column>
-  <clr-dg-row *clrDgItems="let vehicle of vehicles$ | async" [clrDgItem]="vehicle">
+  <clr-dg-row *clrDgItems="let vehicle of vehicles" [clrDgItem]="vehicle">
 
     <clr-dg-action-overflow>
       <button class="action-item" (click)="onSuspend(vehicle)" [disabled]="vehicle.status != 'APPROVED'">Suspend</button>
