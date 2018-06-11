@@ -31,7 +31,7 @@ export class AuthService {
 
     of(this.getToken()).pipe(
       ... this.decodeToken,
-    ).subscribe(user => console.log('restoring user..', user));
+    ).subscribe();
   }
 
   login(username, password) {
@@ -43,7 +43,10 @@ export class AuthService {
     }).pipe(
       map(resp => resp.headers.get('Authorization').substr('Bearer '.length)),
       tap(token => this.saveToken(token)),
-      ...this.decodeToken
+      this.decodeToken[0],
+      this.decodeToken[1],
+      this.decodeToken[2]
+      //...this.decodeToken // TODO maybe fix this
     );
   }
 
