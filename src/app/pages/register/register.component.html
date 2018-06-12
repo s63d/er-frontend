@@ -1,0 +1,24 @@
+<div class="login-wrapper">
+  <form class="login" (ngSubmit)="doRegister()">
+    <label class="title">
+      <h3 class="welcome">Welcome to</h3>
+      Project ER
+      <h5 class="hint">Register your Project ER account here</h5>
+    </label>
+    <div class="login-group">
+      <input class="username" type="text" placeholder="First Name" [(ngModel)]="registerData.firstname" name="firstname">
+      <input class="username" type="text" placeholder="Last Name" [(ngModel)]="registerData.lastname" name="lastname">
+      <input class="username" type="email" placeholder="Email" [(ngModel)]="registerData.email" name="email">
+      <input class="password" type="password" placeholder="Password" [(ngModel)]="registerData.password" name="password">
+      <input class="username" type="text" placeholder="Address" [(ngModel)]="registerData.address" name="address">
+      <input class="username" type="text" placeholder="Postal Code" [(ngModel)]="registerData.postal" name="postal">
+      <input class="username" type="text" placeholder="City" [(ngModel)]="registerData.city" name="city">
+
+      <div class="error" [class.active]="registerFailed">
+        {{ errorMessage || 'Something went wrong during the registration process, check your details or try again later'}}
+      </div>
+      <button type="submit" class="btn btn-primary">Register</button>
+      <a [routerLink]="['login']" class="signup">Already have an account? Login here.</a>
+    </div>
+  </form>
+</div>

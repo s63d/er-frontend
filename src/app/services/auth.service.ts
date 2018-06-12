@@ -4,7 +4,7 @@ import {BehaviorSubject, Observable, of} from 'rxjs';
 import {User} from '../models/user';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import {map, tap} from 'rxjs/operators';
-import { BASE_URL } from '../constants';
+import {API_BASE_URL, BASE_URL} from '../constants';
 
 
 const TOKEN_KEY = 'access_token';
@@ -50,6 +50,13 @@ export class AuthService {
     );
   }
 
+  register(registerData: any) {
+    const body = new HttpParams({fromObject: registerData});
+
+    return this.http.post(`${API_BASE_URL}/users`, body.toString(), {
+      headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'})
+    });
+  }
 
   logout() {
     localStorage.removeItem(TOKEN_KEY);

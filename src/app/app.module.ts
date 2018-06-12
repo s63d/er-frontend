@@ -10,6 +10,7 @@ import { JwtModule } from '@auth0/angular-jwt';
 
 import { HeaderComponent } from './components/header/header.component';
 import { LoginComponent } from './pages/login/login.component';
+import { RegisterComponent } from "./pages/register/register.component";
 import { tokenGetter } from './services/auth.service';
 import { CarsComponent } from './pages/basic/cars/cars.component';
 import { TripsComponent } from './pages/basic/trips/trips.component';
@@ -35,6 +36,7 @@ import { InvoiceDetailUserComponent } from './pages/basic/invoices/invoice-detai
     AppComponent,
     HeaderComponent,
     LoginComponent,
+    RegisterComponent,
     CarsComponent,
     TripsComponent,
     InvoicesComponent,
