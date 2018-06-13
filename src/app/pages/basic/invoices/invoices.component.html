@@ -2,6 +2,7 @@
   <clr-datagrid>
     <clr-dg-placeholder>We couldn't find any invoices</clr-dg-placeholder>
     <clr-dg-column>No.</clr-dg-column>
+    <clr-dg-column>Vehicle ID</clr-dg-column>
     <clr-dg-column>Total distance</clr-dg-column>
     <clr-dg-column>Price</clr-dg-column>
     <clr-dg-column>Date</clr-dg-column>
@@ -9,9 +10,10 @@
     <clr-dg-column>Status</clr-dg-column>
 
     <clr-dg-row *clrDgItems="let invoice of invoices$ | async" [clrDgItem]="invoice">
-      <clr-dg-cell>{{ invoice.id }}</clr-dg-cell>
-      <clr-dg-cell>{{ invoice.length / 1000 }} km</clr-dg-cell>
-      <clr-dg-cell>&euro; {{invoice.price }}</clr-dg-cell>
+      <clr-dg-cell><a [routerLink]="[invoice.id]">{{ invoice.id }}</a></clr-dg-cell>
+      <clr-dg-cell><a href="">{{ invoice.vehicleId | slice:0:7 }}</a></clr-dg-cell>
+      <clr-dg-cell>{{ invoice.distance / 1000 }} km</clr-dg-cell>
+      <clr-dg-cell>{{ invoice.price | currency:'EUR' }}</clr-dg-cell>
       <clr-dg-cell>{{ invoice.date | date }}</clr-dg-cell>
       <clr-dg-cell>{{ invoice.date | date:'MMMM' }}</clr-dg-cell>
       <clr-dg-cell>

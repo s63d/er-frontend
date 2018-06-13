@@ -7,9 +7,8 @@
       <div class="col-md-6">
         <p class="h3">Project ER</p>
         <address>
-          Street Address<br>
-          State, City<br>
-          Region, Postal Code<br>
+          Schulhof 2<br>
+          1010, Wien<br>
           <a href="mailto:info@ersols.online">info@ersols.online</a>
         </address>
       </div>
@@ -18,7 +17,7 @@
         <address>
           {{ invoice.user.address }}<br>
           {{ invoice.user.postal }}, {{ invoice.user.city }}<br>
-          <a href="">TODO@hotmail.com</a>
+          <a [href]="'mailto:' + invoice.user.email">{{ invoice.user.email }}</a>
         </address>
       </div>
     </div>

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-invoice-detail-user',
@@ -8,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
 export class InvoiceDetailUserComponent implements OnInit {
 
 
-  invoice =  [
+  invoices = [
     {
       'user': {
         'id': 1,
@@ -19,65 +22,21 @@ export class InvoiceDetailUserComponent implements OnInit {
         'city': 'Eindhoven',
         'email': 'goosje@hotmail.com'
       },
-      'date': '2018-06-13T10:48:32.000+0000',
+      'vehicleId': '4e40d2ad694070612392676275598054',
+      'date': '2018-06-13T11:05:21.000+0000',
       'status': 'OPEN',
       'lines': [
         {
-          'id': 4630,
+          'id': 4703,
           'tripId': 8,
-          'distance': 176189,
-          'price': 4.175,
-          'parts': [
-            {
-              'id': 4557,
-              'tripId': 8,
-              'price': 0,
-              'distance': 8542,
-              'vat': 6,
-              'origin': 'BE',
-              'details': [
-                {
-                  'id': 4558,
-                  'rate': 0,
-                  'description': 'Vehicle has category a, price is calculated with: 0.0 * 8542 (rate * distance)'
-                }
-              ]
-            },
-            {
-              'id': 4577,
-              'tripId': 8,
-              'price': 1.05,
-              'distance': 42370,
-              'vat': 20,
-              'origin': 'AT',
-              'details': [
-                {
-                  'id': 4578,
-                  'rate': 0.025,
-                  'description': 'Vehicle has label B, 0.025 * 42370 (rate x distance)'
-                }
-              ]
-            },
-            {
-              'id': 4581,
-              'tripId': 8,
-              'price': 3.125,
-              'distance': 125277,
-              'vat': 20,
-              'origin': 'AT',
-              'details': [
-                {
-                  'id': 4582,
-                  'rate': 0.025,
-                  'description': 'Vehicle has label B, 0.025 * 125277 (rate x distance)'
-                }
-              ]
-            }
-          ]
+          'distance': 0,
+          'price': 0,
+          'parts': []
         }
       ],
-      'price': 4.175,
-      'id': 4629
+      'price': 0,
+      'distance': 0,
+      'id': 4702
     },
     {
       'user': {
@@ -89,31 +48,32 @@ export class InvoiceDetailUserComponent implements OnInit {
         'city': 'Eindhoven',
         'email': 'goosje@hotmail.com'
       },
-      'date': '2018-06-13T10:48:32.000+0000',
+      'vehicleId': 'cf03efdc396d771162d9c38858bcfadc',
+      'date': '2018-06-13T11:05:21.000+0000',
       'status': 'OPEN',
       'lines': [
         {
-          'id': 4632,
+          'id': 4705,
           'tripId': 5,
           'distance': 0,
           'price': 0,
           'parts': []
         },
         {
-          'id': 4633,
+          'id': 4706,
           'tripId': 6,
           'distance': 0,
           'price': 0,
           'parts': []
         },
         {
-          'id': 4634,
+          'id': 4707,
           'tripId': 7,
           'distance': 176189,
           'price': 4.175,
           'parts': [
             {
-              'id': 4551,
+              'id': 4648,
               'tripId': 7,
               'price': 1.05,
               'distance': 42370,
@@ -121,14 +81,14 @@ export class InvoiceDetailUserComponent implements OnInit {
               'origin': 'AT',
               'details': [
                 {
-                  'id': 4552,
+                  'id': 4649,
                   'rate': 0.025,
                   'description': 'Vehicle has label B, 0.025 * 42370 (rate x distance)'
                 }
               ]
             },
             {
-              'id': 4553,
+              'id': 4650,
               'tripId': 7,
               'price': 3.125,
               'distance': 125277,
@@ -136,14 +96,14 @@ export class InvoiceDetailUserComponent implements OnInit {
               'origin': 'AT',
               'details': [
                 {
-                  'id': 4554,
+                  'id': 4651,
                   'rate': 0.025,
                   'description': 'Vehicle has label B, 0.025 * 125277 (rate x distance)'
                 }
               ]
             },
             {
-              'id': 4555,
+              'id': 4652,
               'tripId': 7,
               'price': 0,
               'distance': 8542,
@@ -151,9 +111,9 @@ export class InvoiceDetailUserComponent implements OnInit {
               'origin': 'BE',
               'details': [
                 {
-                  'id': 4556,
+                  'id': 4653,
                   'rate': 0,
-                  'description': 'Vehicle has category a, price is calculated with: 0.0 * 8542 (rate * distance)'
+                  'description': 'Vehicle has category b, price is calculated with: 0.0 * 8542 (rate * distance)'
                 }
               ]
             }
@@ -161,7 +121,8 @@ export class InvoiceDetailUserComponent implements OnInit {
         }
       ],
       'price': 4.175,
-      'id': 4631
+      'distance': 176189,
+      'id': 4704
     },
     {
       'user': {
@@ -173,17 +134,48 @@ export class InvoiceDetailUserComponent implements OnInit {
         'city': 'Eindhoven',
         'email': 'goosje@hotmail.com'
       },
-      'date': '2018-06-13T10:48:32.000+0000',
+      'vehicleId': '07811bd12cfa6b73b0a18133e576a640',
+      'date': '2018-06-13T11:05:21.000+0000',
       'status': 'OPEN',
       'lines': [
         {
-          'id': 4636,
+          'id': 4709,
           'tripId': 9,
           'distance': 176189,
           'price': 89.595,
           'parts': [
             {
-              'id': 4559,
+              'id': 4654,
+              'tripId': 9,
+              'price': 1.05,
+              'distance': 42370,
+              'vat': 20,
+              'origin': 'AT',
+              'details': [
+                {
+                  'id': 4655,
+                  'rate': 0.025,
+                  'description': 'Vehicle has label B, 0.025 * 42370 (rate x distance)'
+                }
+              ]
+            },
+            {
+              'id': 4656,
+              'tripId': 9,
+              'price': 3.125,
+              'distance': 125277,
+              'vat': 20,
+              'origin': 'AT',
+              'details': [
+                {
+                  'id': 4657,
+                  'rate': 0.025,
+                  'description': 'Vehicle has label B, 0.025 * 125277 (rate x distance)'
+                }
+              ]
+            },
+            {
+              'id': 4658,
               'tripId': 9,
               'price': 85.42,
               'distance': 8542,
@@ -191,39 +183,9 @@ export class InvoiceDetailUserComponent implements OnInit {
               'origin': 'BE',
               'details': [
                 {
-                  'id': 4560,
+                  'id': 4659,
                   'rate': 0.01,
                   'description': 'Vehicle has category f, price is calculated with: 0.01 * 8542 (rate * distance)'
-                }
-              ]
-            },
-            {
-              'id': 4583,
-              'tripId': 9,
-              'price': 1.05,
-              'distance': 42370,
-              'vat': 20,
-              'origin': 'AT',
-              'details': [
-                {
-                  'id': 4584,
-                  'rate': 0.025,
-                  'description': 'Vehicle has label B, 0.025 * 42370 (rate x distance)'
-                }
-              ]
-            },
-            {
-              'id': 4585,
-              'tripId': 9,
-              'price': 3.125,
-              'distance': 125277,
-              'vat': 20,
-              'origin': 'AT',
-              'details': [
-                {
-                  'id': 4586,
-                  'rate': 0.025,
-                  'description': 'Vehicle has label B, 0.025 * 125277 (rate x distance)'
                 }
               ]
             }
@@ -231,7 +193,8 @@ export class InvoiceDetailUserComponent implements OnInit {
         }
       ],
       'price': 89.595,
-      'id': 4635
+      'distance': 176189,
+      'id': 4708
     },
     {
       'user': {
@@ -243,17 +206,18 @@ export class InvoiceDetailUserComponent implements OnInit {
         'city': 'Eindhoven',
         'email': 'goosje@hotmail.com'
       },
-      'date': '2018-06-13T10:48:32.000+0000',
+      'vehicleId': '29a93f0560f7ffe901c2df59b5465bf1',
+      'date': '2018-06-13T11:05:21.000+0000',
       'status': 'OPEN',
       'lines': [
         {
-          'id': 4638,
+          'id': 4711,
           'tripId': 10,
           'distance': 176189,
           'price': 89.595,
           'parts': [
             {
-              'id': 4561,
+              'id': 4660,
               'tripId': 10,
               'price': 85.42,
               'distance': 8542,
@@ -261,14 +225,14 @@ export class InvoiceDetailUserComponent implements OnInit {
               'origin': 'BE',
               'details': [
                 {
-                  'id': 4562,
+                  'id': 4661,
                   'rate': 0.01,
-                  'description': 'Vehicle has category f, price is calculated with: 0.01 * 8542 (rate * distance)'
+                  'description': 'Vehicle has category c, price is calculated with: 0.01 * 8542 (rate * distance)'
                 }
               ]
             },
             {
-              'id': 4587,
+              'id': 4662,
               'tripId': 10,
               'price': 1.05,
               'distance': 42370,
@@ -276,14 +240,14 @@ export class InvoiceDetailUserComponent implements OnInit {
               'origin': 'AT',
               'details': [
                 {
-                  'id': 4588,
+                  'id': 4663,
                   'rate': 0.025,
                   'description': 'Vehicle has label B, 0.025 * 42370 (rate x distance)'
                 }
               ]
             },
             {
-              'id': 4589,
+              'id': 4664,
               'tripId': 10,
               'price': 3.125,
               'distance': 125277,
@@ -291,7 +255,7 @@ export class InvoiceDetailUserComponent implements OnInit {
               'origin': 'AT',
               'details': [
                 {
-                  'id': 4590,
+                  'id': 4665,
                   'rate': 0.025,
                   'description': 'Vehicle has label B, 0.025 * 125277 (rate x distance)'
                 }
@@ -300,43 +264,13 @@ export class InvoiceDetailUserComponent implements OnInit {
           ]
         },
         {
-          'id': 4639,
+          'id': 4712,
           'tripId': 11,
           'distance': 176189,
-          'price': 4.175,
+          'price': 89.595,
           'parts': [
             {
-              'id': 4563,
-              'tripId': 11,
-              'price': 0,
-              'distance': 8542,
-              'vat': 6,
-              'origin': 'BE',
-              'details': [
-                {
-                  'id': 4564,
-                  'rate': 0,
-                  'description': 'Vehicle has category a, price is calculated with: 0.0 * 8542 (rate * distance)'
-                }
-              ]
-            },
-            {
-              'id': 4591,
-              'tripId': 11,
-              'price': 3.125,
-              'distance': 125277,
-              'vat': 20,
-              'origin': 'AT',
-              'details': [
-                {
-                  'id': 4592,
-                  'rate': 0.025,
-                  'description': 'Vehicle has label B, 0.025 * 125277 (rate x distance)'
-                }
-              ]
-            },
-            {
-              'id': 4593,
+              'id': 4666,
               'tripId': 11,
               'price': 1.05,
               'distance': 42370,
@@ -344,24 +278,64 @@ export class InvoiceDetailUserComponent implements OnInit {
               'origin': 'AT',
               'details': [
                 {
-                  'id': 4594,
+                  'id': 4667,
                   'rate': 0.025,
                   'description': 'Vehicle has label B, 0.025 * 42370 (rate x distance)'
+                }
+              ]
+            },
+            {
+              'id': 4668,
+              'tripId': 11,
+              'price': 3.125,
+              'distance': 125277,
+              'vat': 20,
+              'origin': 'AT',
+              'details': [
+                {
+                  'id': 4669,
+                  'rate': 0.025,
+                  'description': 'Vehicle has label B, 0.025 * 125277 (rate x distance)'
+                }
+              ]
+            },
+            {
+              'id': 4670,
+              'tripId': 11,
+              'price': 85.42,
+              'distance': 8542,
+              'vat': 6,
+              'origin': 'BE',
+              'details': [
+                {
+                  'id': 4671,
+                  'rate': 0.01,
+                  'description': 'Vehicle has category e, price is calculated with: 0.01 * 8542 (rate * distance)'
                 }
               ]
             }
           ]
         }
       ],
-      'price': 93.77,
-      'id': 4637
+      'price': 179.19,
+      'distance': 352378,
+      'id': 4710
     }
-  ][3];
+  ];
+  invoice;
 
-  constructor() { }
+  constructor(private route: ActivatedRoute) {
 
-  ngOnInit() {
-
+    route.params.pipe(
+      map(params => {
+        const invoiceId = params.invoiceId;
+        return this.invoices.filter(invoice => invoice.id == invoiceId)[0];
+      })
+    ).subscribe(invoice => {
+      this.invoice = invoice;
+    });
   }
+
+  ngOnInit() {}
 
 }
