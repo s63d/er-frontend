@@ -22,7 +22,7 @@ export class HeaderComponent implements OnInit {
 
   searchTerm: String;
 
-  constructor(protected auth: AuthService, private router: Router) {
+  constructor(public auth: AuthService, private router: Router) {
   }
 
   ngOnInit() {}

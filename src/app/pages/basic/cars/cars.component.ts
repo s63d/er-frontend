@@ -13,6 +13,7 @@ import { BasicVehicle } from '../../../models/basic-vehicle';
 })
 export class CarsComponent implements OnInit {
 
+  opened = false
   vehicles$: Observable<BasicVehicle[]>;
 
   constructor(private auth: AuthService, private basicService: BasicService) { }

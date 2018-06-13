@@ -15,6 +15,8 @@ export class RegisterCarModalComponent implements OnInit {
   @Output() onOpenedToggled = new EventEmitter<boolean>();
   @Output() onNewVehicle = new EventEmitter<BasicVehicle>();
 
+  submitted = false;
+
   vehicleData  = {
     license: '',
     type: '',
