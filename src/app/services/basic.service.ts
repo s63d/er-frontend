@@ -30,4 +30,13 @@ export class BasicService {
   trips(vehicleId: String, page: number = 1) {
     return this.http.get<Page<Trip>>(`${API_BASE_URL}/trips?vehicleId=${vehicleId}`);
   }
+
+  invoices() {
+    return this.http.get<any[]>(`${API_BASE_URL}/invoices`);
+  }
+
+  invoice(id: number) {
+    return this.http.get<any>(`${API_BASE_URL}/invoices/${id}`);
+
+  }
 }
