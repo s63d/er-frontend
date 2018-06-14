@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {Observable} from 'rxjs';
+import {flatMap, map} from 'rxjs/operators';
+import {BasicService} from '../../../../services/basic.service';
 
 @Component({
   selector: 'app-invoice-detail-user',
@@ -6,36 +10,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./invoice-detail-user.component.css']
 })
 export class InvoiceDetailUserComponent implements OnInit {
+  invoice;
 
+  constructor(private route: ActivatedRoute, private basicService: BasicService) {
 
-  invoice = {
-    'userId': 1,
-    'date': '2018-06-11T10:54:11.000+0000',
-    'status': 'OPEN',
-    'rate': {
-      'category': 'A',
-      'price': 0.001
-    },
-    'invoiceLine': [
-      {
-        'id': 15,
-        'tripId': 8,
-        'length': 6473,
-        'rate': {
-          'category': 'A',
-          'price': 0.001
-        },
-        'price': 0.006473
-      }
-    ],
-    'price': 0.006473,
-    'id': 14
-  };
-
-  constructor() { }
-
-  ngOnInit() {
-
+    route.params.pipe(
+      map(params => params.invoiceId),
+      flatMap(invoiceId => this.basicService.invoice(invoiceId))
+    ).subscribe(invoice => {
+      this.invoice = invoice;
+    });
   }
+
+  ngOnInit() {}
 
 }

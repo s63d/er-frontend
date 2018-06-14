@@ -54,7 +54,7 @@ const routes: Routes = [
     }
   },
   {
-    path: 'invoices/detail',
+    path: 'invoices/:invoiceId',
     component: InvoiceDetailUserComponent,
     canActivate: [AuthGuard, RoleGuard],
     data: {

@@ -5,6 +5,7 @@ import {BasicInvoice} from '../../../models/basic-invoice';
 import {AuthService} from '../../../services/auth.service';
 import {filter, flatMap} from 'rxjs/operators';
 import { API_BASE_URL } from '../../../constants';
+import {BasicService} from '../../../services/basic.service';
 
 @Component({
   selector: 'app-invoices',
@@ -13,17 +14,12 @@ import { API_BASE_URL } from '../../../constants';
 })
 export class InvoicesComponent implements OnInit {
 
-  invoices$: Observable<BasicInvoice[]>;
-  constructor(private http: HttpClient, private auth: AuthService) {
+  invoices$: Observable<any[]>;
+  constructor(private basicService: BasicService, private auth: AuthService) {
   }
 
   ngOnInit() {
-
-    this.invoices$ =
-      this.auth.user$.pipe(
-        filter(user => user.email === 'goosje@hotmail.com'),
-        flatMap(x =>  this.http.get<BasicInvoice[]>(`${API_BASE_URL}/invoices?userId=1`))
-      );
+    this.invoices$ = this.basicService.invoices();
   }
 
 
