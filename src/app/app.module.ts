@@ -63,7 +63,7 @@ import { InvoiceDetailUserComponent } from './pages/basic/invoices/invoice-detai
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
-        whitelistedDomains: ['localhost', 'ersols.online'],
+        whitelistedDomains: ['localhost', 'api.ersols.online'],
       }
     }),
     BrowserAnimationsModule,

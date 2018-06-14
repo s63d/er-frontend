@@ -10,16 +10,14 @@ import {BasicService} from '../../../../services/basic.service';
   styleUrls: ['./invoice-detail-user.component.css']
 })
 export class InvoiceDetailUserComponent implements OnInit {
-  invoice;
+  invoice$: Observable<any>;
 
   constructor(private route: ActivatedRoute, private basicService: BasicService) {
 
-    route.params.pipe(
+    this.invoice$ = route.params.pipe(
       map(params => params.invoiceId),
       flatMap(invoiceId => this.basicService.invoice(invoiceId))
-    ).subscribe(invoice => {
-      this.invoice = invoice;
-    });
+    );
   }
 
   ngOnInit() {}

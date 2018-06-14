@@ -37,7 +37,7 @@ export class AuthService {
   login(username, password) {
     const body = new HttpParams({fromObject: {username, password}});
 
-    return this.http.post(`${BASE_URL}/login`, body.toString(), {
+    return this.http.post(`${API_BASE_URL}/login`, body.toString(), {
       headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'}),
       observe: 'response'
     }).pipe(

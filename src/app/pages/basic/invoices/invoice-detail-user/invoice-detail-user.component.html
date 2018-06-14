@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card" *ngIf="invoice$ | async; let invoice">
   <div class="card-header">
     <h3 class="card-title">#INV{{invoice.id}}</h3>
   </div>
