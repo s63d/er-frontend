@@ -14,6 +14,7 @@ import {AdminHomeComponent} from "./pages/admin/admin-home/admin-home.component"
 import {GovCarsListComponent} from "./pages/gov/cartrackers-list/gov-cars-list.component";
 import { InvoiceDetailUserComponent } from './pages/basic/invoices/invoice-detail-user/invoice-detail-user.component';
 import {RegisterComponent} from "./pages/register/register.component";
+import {GovRateListComponent} from './pages/gov/rates-list/gov-rate-list/gov-rate-list.component';
 
 const routes: Routes = [
   {
@@ -87,6 +88,14 @@ const routes: Routes = [
   {
     path: 'gov/cars',
     component: GovCarsListComponent,
+    canActivate: [AuthGuard, RoleGuard],
+    data: {
+      role: ROLE_GOV
+    }
+  },
+  {
+    path: 'gov/rate',
+    component: GovRateListComponent,
     canActivate: [AuthGuard, RoleGuard],
     data: {
       role: ROLE_GOV
