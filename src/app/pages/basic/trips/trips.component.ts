@@ -16,6 +16,27 @@ export class TripsComponent implements OnInit {
 
   trips = {};
   polylines: Observable<any>;
+  statuses$: Observable<String[]>;
+  vehicles$: Observable<BasicVehicle[]>;
+
+  constructor(private basicService: BasicService) { }
+
+  ngOnInit() {
+
+    this.vehicles$ = this.basicService.vehicles();
+    this.statuses$ = this.vehicles$.pipe(
+      map(vehicles => _.groupBy(vehicles, 'status')),
+      map(groups => Object.keys(groups)),
+    );
+  }
+
+
+  filteredVehicles(status: String): Observable<BasicVehicle[]> {
+    return this.vehicles$.pipe(
+      map(vehicles => vehicles.filter(v => v.status === status))
+    );
+  }
+
   tripsChanged(vehicleId, selectedTrips) {
     this.trips[vehicleId] = selectedTrips;
 
@@ -41,32 +62,10 @@ export class TripsComponent implements OnInit {
               color: vehicles.filter(v => v.id === id)[0].color,
               geo: decoded
             });
-            // arr.push(decoded);
           }
-      }
-      return arr;
+        }
+        return arr;
       }));
-  }
-
-  statuses$: Observable<String[]>;
-  vehicles$: Observable<BasicVehicle[]>;
-
-  constructor(private basicService: BasicService) { }
-
-  ngOnInit() {
-
-    this.vehicles$ = this.basicService.vehicles();
-    this.statuses$ = this.vehicles$.pipe(
-      map(vehicles => _.groupBy(vehicles, 'status')),
-      map(groups => Object.keys(groups)),
-    );
-  }
-
-
-  filteredVehicles(status: String): Observable<BasicVehicle[]> {
-    return this.vehicles$.pipe(
-      map(vehicles => vehicles.filter(v => v.status === status))
-    );
   }
 
 }
