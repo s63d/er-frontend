@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Observable} from 'rxjs';
 import {Trip} from '../../../../../models/basic-invoice';
 import {BasicService} from '../../../../../services/basic.service';
@@ -12,10 +12,11 @@ import {Page} from '../../../../../models/page';
 })
 export class TripListComponent implements OnInit {
   @Input() vehicleId: String;
+  @Output() selectedTrips = new EventEmitter<Trip[]>();
 
   trips$: Observable<Trip[]>;
   page$: Observable<Page<Trip>>;
-  selectedTrips = [];
+  _selectedTrips = [];
 
   currentPage = 1;
   constructor(private basicService: BasicService) { }
@@ -27,4 +28,7 @@ export class TripListComponent implements OnInit {
     );
   }
 
+  selectedChange(event) {
+    this.selectedTrips.emit(event);
+  }
 }

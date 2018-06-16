@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Observable} from 'rxjs';
+import {Observable, of} from 'rxjs';
 import {filter, map, tap} from 'rxjs/operators';
 import * as polylineUtil from '@mapbox/polyline';
 import {BasicService} from '../../../services/basic.service';
@@ -14,6 +14,28 @@ import * as _ from 'lodash';
 })
 export class TripsComponent implements OnInit {
 
+  trips = {};
+  polylines = [];
+  tripsChanged(vehicleId, trips) {
+    this.trips[vehicleId] = trips;
+
+    const arr = [];
+    const ids = Object.keys(this.trips);
+    for (const id of ids) {
+      for (const trip of this.trips[id]) {
+        if (trip.polyline === '') {
+          continue;
+        }
+
+        const decoded = {'type': 'Feature',
+                          'properties': {},
+                          'geometry': polylineUtil.toGeoJSON(trip.polyline)
+                        };
+        arr.push(decoded);
+      }
+    }
+    this.polylines = arr;
+  }
   // trips$ = of([
   //   {
   //     'tripId': 1,

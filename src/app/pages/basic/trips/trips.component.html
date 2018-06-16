@@ -5,18 +5,17 @@
         <div class="card">
           <yaga-map [zoom]="8" [lat]="48.210033" [lng]="16.363449">
             <yaga-tile-layer [url]="'http://a.tile.openstreetmap.org/{z}/{x}/{y}.png'"></yaga-tile-layer>
-          </yaga-map>
+            <yaga-polyline *ngFor="let polyline of polylines" [geoJSON]="polyline"></yaga-polyline></yaga-map>
         </div>
       </div>
     </div>
-
     <div *ngFor="let vehicle of vehicles$ | async">
       <h1>{{vehicle.brand}} - {{ vehicle.type }} - {{ vehicle.color }}(<small class="text-muted"><a href="">{{ vehicle.id | slice:0:7 }}</a></small>)</h1>
 
       <span *ngIf="vehicle.status == 'APPROVED'" class="label label-success">Approved</span>
       <span *ngIf="vehicle.status == 'PENDING'" class="label label-info">Pending</span>
       <span *ngIf="vehicle.status == 'SUSPENDED'" class="label label-danger">Suspended</span>
-      <app-trip-list [vehicleId]="vehicle.id"></app-trip-list>
+      <app-trip-list [vehicleId]="vehicle.id" (selectedTrips)="tripsChanged(vehicle.id, $event)"></app-trip-list>
     </div>
   </div>
 </div>
