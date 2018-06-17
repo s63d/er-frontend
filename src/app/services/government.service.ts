@@ -5,6 +5,7 @@ import {Page} from '../models/page';
 import {GovernmentVehicle} from '../models/government-vehicle';
 import { API_BASE_URL } from '../constants';
 import {Rate} from '../models/rate';
+import {Invoice} from '../models/invoice';
 
 @Injectable({
   providedIn: 'root'
@@ -33,7 +34,7 @@ export class GovernmentService {
     return this.http.put(`${API_BASE_URL}/rates`, body);
   }
 
-  invoices(page = 1): Observable<Page<any>> {
-    return this.http.get(`${API_BASE_URL}/invoices/all`);
+  invoices(page = 1): Observable<Page<Invoice>> {
+    return this.http.get<Page<Invoice>>(`${API_BASE_URL}/invoices/all`);
   }
 }

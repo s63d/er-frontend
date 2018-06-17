@@ -6,6 +6,7 @@ import {AuthService} from '../../../services/auth.service';
 import {filter, flatMap} from 'rxjs/operators';
 import { API_BASE_URL } from '../../../constants';
 import {BasicService} from '../../../services/basic.service';
+import {Invoice} from '../../../models/invoice';
 
 @Component({
   selector: 'app-invoices',
@@ -14,7 +15,7 @@ import {BasicService} from '../../../services/basic.service';
 })
 export class InvoicesComponent implements OnInit {
 
-  invoices$: Observable<any[]>;
+  invoices$: Observable<Invoice[]>;
   constructor(private basicService: BasicService, private auth: AuthService) {
   }
 
