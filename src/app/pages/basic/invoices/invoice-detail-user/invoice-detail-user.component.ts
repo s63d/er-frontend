@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Observable} from 'rxjs';
-import {flatMap, map} from 'rxjs/operators';
+import {flatMap, map, tap} from 'rxjs/operators';
 import {BasicService} from '../../../../services/basic.service';
+import {PaymentService} from "../../../../services/payment.service";
 
 @Component({
   selector: 'app-invoice-detail-user',
@@ -12,7 +13,14 @@ import {BasicService} from '../../../../services/basic.service';
 export class InvoiceDetailUserComponent implements OnInit {
   invoice$: Observable<any>;
 
-  constructor(private route: ActivatedRoute, private basicService: BasicService) {
+  loadingPayPal = false;
+
+  constructor(
+    private route: ActivatedRoute,
+    private basicService: BasicService,
+    private paymentService: PaymentService,
+    private router: Router
+  ) {
 
     this.invoice$ = route.params.pipe(
       map(params => params.invoiceId),
@@ -22,4 +30,9 @@ export class InvoiceDetailUserComponent implements OnInit {
 
   ngOnInit() {}
 
+  onPayClick(sum: number) {
+    this.loadingPayPal = true;
+    this.paymentService.createPayment(sum.toFixed(2))
+      .subscribe((payPalRes:any) => window.location.href = payPalRes.redirect_url)
+  }
 }
