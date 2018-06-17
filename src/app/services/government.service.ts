@@ -30,6 +30,6 @@ export class GovernmentService {
     const body = new HttpParams()
       .set('category', category.toString())
       .set('price', price.toString());
-    return this.http.put(`${API_BASE_URL}/rates`, body);
+    return this.http.post<Rate>(`${API_BASE_URL}/rates`, body);
   }
 }
