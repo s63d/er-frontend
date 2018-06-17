@@ -32,4 +32,8 @@ export class GovernmentService {
       .set('price', price.toString());
     return this.http.put(`${API_BASE_URL}/rates`, body);
   }
+
+  invoices(page = 1): Observable<Page<any>> {
+    return this.http.get(`${API_BASE_URL}/invoices/all`);
+  }
 }

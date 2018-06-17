@@ -31,6 +31,7 @@ import { UserListAdminComponent } from './pages/admin/admin-home/components/user
 import { TripListComponent } from './pages/basic/trips/components/trip-list/trip-list.component';
 import { InvoiceDetailUserComponent } from './pages/basic/invoices/invoice-detail-user/invoice-detail-user.component';
 import { GovRateListComponent } from './pages/gov/rates-list/gov-rate-list/gov-rate-list.component';
+import { GovInvoiceListComponent } from './pages/gov/invoice-list/gov-invoice-list.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { GovRateListComponent } from './pages/gov/rates-list/gov-rate-list/gov-r
     GovCarsListComponent,
     TripListComponent,
     InvoiceDetailUserComponent,
-    GovRateListComponent
+    GovRateListComponent,
+    GovInvoiceListComponent
   ],
   imports: [
     BrowserModule,

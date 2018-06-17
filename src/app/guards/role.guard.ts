@@ -30,6 +30,12 @@ export class RoleGuard implements CanActivate {
     return this.auth.user$.pipe(
       tap((user: User) => {
         const userRole = user.role.toUpperCase();
+
+        if (Array.isArray(role)) {
+          if (role.indexOf(userRole) !== -1) {
+            return;
+          }
+        }
         if (userRole === role.toUpperCase()) {
           return;
         }
@@ -48,7 +54,13 @@ export class RoleGuard implements CanActivate {
             return;
         }
       }),
-      map((user: User) => user.role.toUpperCase() === role.toUpperCase()),
+      map((user: User) => {
+        if (Array.isArray(role)) {
+          return  (role.indexOf(user.role) !== -1);
+        } else {
+         return user.role.toUpperCase() === role.toUpperCase();
+        }
+      }),
     );
   }
 }

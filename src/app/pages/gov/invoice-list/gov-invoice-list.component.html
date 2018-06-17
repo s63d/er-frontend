@@ -1,0 +1,39 @@
+<div class="col-md-12">
+  <pre><code>
+    {{ invoices$ | async | json }}
+  </code></pre>
+
+  <clr-datagrid>
+    <clr-dg-placeholder>We couldn't find any invoices</clr-dg-placeholder>
+    <clr-dg-column>No.</clr-dg-column>
+    <clr-dg-column>User</clr-dg-column>
+    <clr-dg-column>Vehicle ID</clr-dg-column>
+    <clr-dg-column>Total distance</clr-dg-column>
+    <clr-dg-column>Price</clr-dg-column>
+    <clr-dg-column>Date</clr-dg-column>
+    <clr-dg-column>Month</clr-dg-column>
+    <clr-dg-column>Status</clr-dg-column>
+
+    <clr-dg-row *clrDgItems="let invoice of invoices$ | async" [clrDgItem]="invoice">
+      <clr-dg-cell><a [routerLink]="['/', 'invoices', invoice.id]">{{ invoice.id }}</a></clr-dg-cell>
+      <clr-dg-cell>{{ invoice.user.firstName }} {{ invoice.user.lastName }}</clr-dg-cell>
+      <clr-dg-cell><a href="">{{ invoice.vehicleId | slice:0:7 }}</a></clr-dg-cell>
+      <clr-dg-cell>{{ invoice.distance / 1000 }} km</clr-dg-cell>
+      <clr-dg-cell>{{ invoice.price | currency:'EUR' }}</clr-dg-cell>
+      <clr-dg-cell>{{ invoice.date | date }}</clr-dg-cell>
+      <clr-dg-cell>{{ invoice.date | date:'MMMM' }}</clr-dg-cell>
+      <clr-dg-cell>
+        <span *ngIf="invoice.status == 'OPEN'" class="label label-info">Open</span>
+        <span *ngIf="invoice.status == 'DUE'" class="label label-warning">Due in 2 weeks</span>
+        <span *ngIf="invoice.status == 'PAID'" class="label label-success">Paid</span>
+      </clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-footer>
+      <clr-dg-pagination #pagination [clrDgPageSize]="10">
+        {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
+        of {{pagination.totalItems}} invoices
+      </clr-dg-pagination>
+    </clr-dg-footer>
+  </clr-datagrid>
+</div>
