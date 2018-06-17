@@ -31,6 +31,7 @@ import { UserListAdminComponent } from './pages/admin/admin-home/components/user
 import { TripListComponent } from './pages/basic/trips/components/trip-list/trip-list.component';
 import { InvoiceDetailUserComponent } from './pages/basic/invoices/invoice-detail-user/invoice-detail-user.component';
 import { CanceledPaymentComponent } from './pages/basic/invoices/canceled-payment/canceled-payment.component';
+import { GovRateListComponent } from './pages/gov/rates-list/gov-rate-list/gov-rate-list.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,9 @@ import { CanceledPaymentComponent } from './pages/basic/invoices/canceled-paymen
     GovCarsListComponent,
     TripListComponent,
     InvoiceDetailUserComponent,
-    CanceledPaymentComponent
+    CanceledPaymentComponent,
+    InvoiceDetailUserComponent,
+    GovRateListComponent
   ],
   imports: [
     BrowserModule,

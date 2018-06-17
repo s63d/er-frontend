@@ -1,4 +1,4 @@
-<clr-datagrid [(clrDgSelected)]="selectedTrips" [clDgRowSelection]="true">
+<clr-datagrid [(clrDgSelected)]="_selectedTrips" (clrDgSelectedChange)="selectedChange($event)" [clDgRowSelection]="true">
   <clr-dg-placeholder>We couldn't find any trips</clr-dg-placeholder>
   <clr-dg-column>Trip ID</clr-dg-column>
   <clr-dg-column>Distance</clr-dg-column>
