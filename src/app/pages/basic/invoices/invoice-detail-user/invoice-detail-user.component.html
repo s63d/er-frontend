@@ -40,8 +40,8 @@
         <tr>
           <td> {{ i + 1}} </td>
           <td colspan="3" class="left">
-            Trip <a href="">#{{ line.tripId }}</a> <br>
-            <span class="text-muted">From a to b</span>
+            Trip #{{ line.tripId }}<br>
+            <!--<span class="text-muted">From a to b</span>-->
           </td>
           <td>{{ line.distance / 1000 }} km</td>
           <td></td>
@@ -72,6 +72,11 @@
           </tr>
         </ng-container>
       </ng-container>
+      <tr>
+        <td colspan="6"></td>
+        <td><b>TOTAL PRICE</b></td>
+        <td><b>{{ invoice.price | currency:'EUR' }}</b></td>
+      </tr>
     </table>
   </div>
     <div class="card-footer">
