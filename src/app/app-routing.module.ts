@@ -14,6 +14,7 @@ import {AdminHomeComponent} from "./pages/admin/admin-home/admin-home.component"
 import {GovCarsListComponent} from "./pages/gov/cartrackers-list/gov-cars-list.component";
 import { InvoiceDetailUserComponent } from './pages/basic/invoices/invoice-detail-user/invoice-detail-user.component';
 import {RegisterComponent} from "./pages/register/register.component";
+import {CanceledPaymentComponent} from "./pages/basic/invoices/canceled-payment/canceled-payment.component";
 
 const routes: Routes = [
   {
@@ -56,6 +57,14 @@ const routes: Routes = [
   {
     path: 'invoices/:invoiceId',
     component: InvoiceDetailUserComponent,
+    canActivate: [AuthGuard, RoleGuard],
+    data: {
+      role: ROLE_BASIC
+    }
+  },
+  {
+    path: 'paymentCanceled',
+    component: CanceledPaymentComponent,
     canActivate: [AuthGuard, RoleGuard],
     data: {
       role: ROLE_BASIC
