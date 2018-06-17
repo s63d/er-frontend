@@ -37,6 +37,12 @@ export class BasicService {
 
   invoice(id: number) {
     return this.http.get<any>(`${API_BASE_URL}/invoices/${id}`);
+  }
 
+  invoiceStatus(id: number, paid: boolean) {
+    const body = new HttpParams()
+      .set('id', id.toString())
+      .set('paid', paid.toString());
+    return this.http.post(`${API_BASE_URL}/invoices/paid`, body);
   }
 }

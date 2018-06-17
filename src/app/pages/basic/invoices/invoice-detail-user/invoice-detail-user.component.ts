@@ -18,8 +18,7 @@ export class InvoiceDetailUserComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private basicService: BasicService,
-    private paymentService: PaymentService,
-    private router: Router
+    private paymentService: PaymentService
   ) {
 
     this.invoice$ = route.params.pipe(
@@ -30,9 +29,12 @@ export class InvoiceDetailUserComponent implements OnInit {
 
   ngOnInit() {}
 
-  onPayClick(sum: number) {
+  onPayClick(invoiceId: number, sum: number) {
     this.loadingPayPal = true;
     this.paymentService.createPayment(sum.toFixed(2))
-      .subscribe((payPalRes:any) => window.location.href = payPalRes.redirect_url)
+      .subscribe((payPalRes:any) => window.location.href = payPalRes.redirect_url);
+
+    // "payment successful (temporary fix)
+    this.basicService.invoiceStatus(invoiceId, true).subscribe()
   }
 }

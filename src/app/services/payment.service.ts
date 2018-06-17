@@ -10,11 +10,15 @@ export class PaymentService {
   constructor(private http: HttpClient) { }
 
   createPayment(sum: string) {
-    const body = new HttpParams().set('sum', sum);
+    const body = new HttpParams()
+      .set('sum', sum);
     return this.http.post(`${API_BASE_URL}/paypal/payment`, body)
   }
 
   completePayment(paymentId, payerId) {
-    return this.http.post(`${API_BASE_URL}/paypal/complete?paymentId=${paymentId}&playerId=${payerId}`, {})
+    const body = new HttpParams()
+      .set('paymentId', paymentId)
+      .set('playerId', payerId);
+    return this.http.post(`${API_BASE_URL}/paypal/complete`, body)
   }
 }
