@@ -14,6 +14,7 @@ import {AdminHomeComponent} from "./pages/admin/admin-home/admin-home.component"
 import {GovCarsListComponent} from "./pages/gov/cartrackers-list/gov-cars-list.component";
 import { InvoiceDetailUserComponent } from './pages/basic/invoices/invoice-detail-user/invoice-detail-user.component';
 import {RegisterComponent} from "./pages/register/register.component";
+import {CanceledPaymentComponent} from "./pages/basic/invoices/canceled-payment/canceled-payment.component";
 import {GovRateListComponent} from './pages/gov/rates-list/gov-rate-list/gov-rate-list.component';
 import {GovInvoiceListComponent} from './pages/gov/invoice-list/gov-invoice-list.component';
 
@@ -61,6 +62,14 @@ const routes: Routes = [
     canActivate: [AuthGuard, RoleGuard],
     data: {
       role: [ROLE_BASIC, ROLE_GOV]
+    }
+  },
+  {
+    path: 'paymentCanceled',
+    component: CanceledPaymentComponent,
+    canActivate: [AuthGuard, RoleGuard],
+    data: {
+      role: ROLE_BASIC
     }
   },
   /*

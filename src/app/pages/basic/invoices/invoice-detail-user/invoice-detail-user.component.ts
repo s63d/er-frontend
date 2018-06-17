@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Observable} from 'rxjs';
-import {flatMap, map} from 'rxjs/operators';
+import {flatMap, map, tap} from 'rxjs/operators';
 import {BasicService} from '../../../../services/basic.service';
 import {Invoice} from '../../../../models/invoice';
+import {PaymentService} from '../../../../services/payment.service';
 
 @Component({
   selector: 'app-invoice-detail-user',
@@ -13,7 +14,13 @@ import {Invoice} from '../../../../models/invoice';
 export class InvoiceDetailUserComponent implements OnInit {
   invoice$: Observable<Invoice>;
 
-  constructor(private route: ActivatedRoute, private basicService: BasicService) {
+  loadingPayPal = false;
+
+  constructor(
+    private route: ActivatedRoute,
+    private basicService: BasicService,
+    private paymentService: PaymentService
+  ) {
 
     this.invoice$ = route.params.pipe(
       map(params => params.invoiceId),
@@ -23,4 +30,12 @@ export class InvoiceDetailUserComponent implements OnInit {
 
   ngOnInit() {}
 
+  onPayClick(invoiceId: number, sum: number) {
+    this.loadingPayPal = true;
+    this.paymentService.createPayment(sum.toFixed(2))
+      .subscribe((payPalRes:any) => window.location.href = payPalRes.redirect_url);
+
+    // "payment successful (temporary fix)
+    this.basicService.invoiceStatus(invoiceId, true).subscribe()
+  }
 }

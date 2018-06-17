@@ -4,7 +4,6 @@ import {BasicVehicle} from '../models/basic-vehicle';
 import {Page} from '../models/page';
 import {Trip} from '../models/basic-invoice';
 import { API_BASE_URL } from '../constants';
-import { Vehicle } from '../models/vehicle';
 import {Invoice} from '../models/invoice';
 import {Observable} from 'rxjs';
 
@@ -39,6 +38,13 @@ export class BasicService {
 
   invoice(id: number): Observable<Invoice> {
     return this.http.get<Invoice>(`${API_BASE_URL}/invoices/${id}`);
-
   }
+
+  invoiceStatus(id: number, paid: boolean) {
+    const body = new HttpParams()
+      .set('id', id.toString())
+      .set('paid', paid.toString());
+    return this.http.post(`${API_BASE_URL}/invoices/paid`, body);
+  }
+
 }

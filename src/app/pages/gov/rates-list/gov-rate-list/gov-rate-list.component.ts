@@ -3,6 +3,8 @@ import {Observable} from 'rxjs';
 import {Rate} from '../../../../models/rate';
 import {GovernmentService} from '../../../../services/government.service';
 import {AdminUser, Role} from '../../../../models/adminUser';
+import {map} from "rxjs/operators";
+import {combineLatest} from "rxjs/index";
 
 @Component({
   selector: 'app-gov-rate-list',
@@ -29,10 +31,17 @@ export class GovRateListComponent implements OnInit {
   }
 
   changeRate() {
-    console.log(this.rateCategory.category);
-    console.log(this.ratePrice);
-    this.govService.updateRate(this.rateCategory.category, this.ratePrice)
-    // this.rateCategory = null;
+    const updatedRole$ = this.govService.updateRate(this.rateCategory.category, this.ratePrice);
+
+    this.rates$ = combineLatest(this.rates$, updatedRole$)
+      .pipe(
+        map(data => {
+          const rates: Rate[] = data[0];
+          const updatedRate: Rate = data[1];
+          return rates.map((rate: Rate) => rate.category === updatedRate.category ? updatedRate : rate)
+        })
+      );
+
     this.showModal = false
   }
 

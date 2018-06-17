@@ -80,7 +80,11 @@
     </table>
   </div>
     <div class="card-footer">
-      <button class="btn btn-primary btn-link" onclick="javascript:window.print();"><clr-icon shape="wallet"></clr-icon> Pay</button>
-      <button class="btn btn-secondary btn-link float-md-right" onclick="javascript:window.print();"><clr-icon shape="printer"></clr-icon> Print</button>
+      <button class="btn btn-primary btn-link" style="outline: none;"
+              [ngClass]="loadingPayPal ? ['spinner', 'spinner-sm'] : ''"
+              (click)="onPayClick(invoice.id, invoice.price)">
+        <clr-icon shape="wallet"></clr-icon> Pay
+      </button>
+      <button class="btn btn-secondary btn-link float-md-right" onclick="window.print();"><clr-icon shape="printer"></clr-icon> Print</button>
   </div>
 </div>
